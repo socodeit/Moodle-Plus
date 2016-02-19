@@ -1,6 +1,7 @@
 package com.agents.cop290;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -20,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
         int e = rand.nextInt(7);
         String[] q = getResources().getStringArray(R.array.quotes);
         a.setText(q[e]);
+        Typeface tf = Typeface.createFromAsset(getAssets(),
+                "fonts/comici.ttf");
+        a.setTypeface(tf);
         Button next=(Button) findViewById(R.id.next);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
