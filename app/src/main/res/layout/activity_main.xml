@@ -37,12 +37,12 @@
         android:layout_height="match_parent"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:id="@+id/quote"
-        android:layout_below="@+id/plus" />
+        android:layout_below="@+id/plus"
+        android:textColor="#050505" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
         android:id="@+id/next"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"

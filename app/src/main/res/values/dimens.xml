@@ -8,4 +8,9 @@
     <dimen name="login_username_seperation">90dp</dimen>
     <dimen name="username_password_seperation">10dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <!--Reference given-->
+    <dimen name="tab_max_width">264dp</dimen>
+    <dimen name="tab_padding_bottom">16dp</dimen>
+    <dimen name="tab_label">14sp</dimen>
+    <dimen name="custom_tab_layout_height">72dp</dimen>
 </resources>

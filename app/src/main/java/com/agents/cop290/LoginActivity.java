@@ -35,9 +35,9 @@ public class LoginActivity extends AppCompatActivity {
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText usernameFeild = (EditText) findViewById(R.id.username);
+                EditText usernameField = (EditText) findViewById(R.id.username);
                 EditText passwordField = (EditText) findViewById(R.id.password);
-                Editable editable = usernameFeild.getText();
+                Editable editable = usernameField.getText();
                 final String username = editable == null ? null : editable.toString();
                 editable = passwordField.getText();
                 final String password = editable == null ? null : editable.toString();
@@ -53,7 +53,18 @@ public class LoginActivity extends AppCompatActivity {
 
                             if(success.equals("true"))
                             {
-                                //Intent nextActivity = new Intent(this,activity)
+                                Intent nextActivity = new Intent(LoginActivity.this,CourseListStudents.class);
+
+                                Bundle userpass = new Bundle();
+                                userpass.putString("username",username);
+                                userpass.putString("password",password);
+
+                                nextActivity.putExtras(userpass);
+
+                                startActivity(nextActivity);
+                            }
+                            else {
+                                Toast.makeText(getApplicationContext(),"Authentication Failure..!!",Toast.LENGTH_SHORT).show();
                             }
 
                         }catch (JSONException e)
