@@ -49,12 +49,16 @@
                 android:hint="Username"
                 android:id="@+id/username"
                 android:singleLine="true"
+                android:drawableLeft="@drawable/user"
+                android:drawablePadding="8dp"
                 android:textSize="25dp" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
+                android:drawableLeft="@drawable/password"
+                android:drawablePadding="8dp"
                 android:layout_marginTop="@dimen/username_password_seperation"
                 android:hint="Password"
                 android:ems="10"
@@ -66,9 +70,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="LOGIN"
-                android:id="@+id/email_sign_in_button"
+                android:id="@+id/login"
                 android:background="@drawable/roundcorner"
-                android:layout_gravity="center_horizontal" />
+                android:drawableLeft="@android:drawable/ic_lock_idle_lock"
+                android:drawablePadding="2dip"
+                android:paddingLeft="110dip"
+                android:paddingRight="110dip"
+                android:layout_gravity="center_horizontal"
+                android:textSize="25dp"
+                android:clickable="true" />
 
         </LinearLayout>
     </ScrollView>
