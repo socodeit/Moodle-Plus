@@ -6,14 +6,13 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,15 +28,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.agents.cop290.MainActivity" />
         </activity>
-        <activity
-            android:name=".CoursesList_Students"
-            android:label="@string/title_activity_courses_list__students"
-            android:parentActivityName=".LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.agents.cop290.LoginActivity" />
-        </activity>
+        <activity android:name=".CourseListStudents"></activity>
     </application>
 
 </manifest>
