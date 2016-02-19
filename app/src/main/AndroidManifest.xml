@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.agents.cop290">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -25,7 +25,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.agents.cop290.MainActivity" />
         </activity>
-        <activity android:name=".CourseListStudents"></activity>
+        <activity android:name=".CourseListStudents" />
+        <activity
+            android:name=".courseDetail"
+            android:theme="@style/MyMaterialTheme" />
+        <activity android:name=".aboutCourseFragment" />
+        <activity android:name=".assignmentFragment" />
+        <activity android:name=".gradesFragment" />
+        <activity android:name=".threadsFragment"></activity>
     </application>
 
 </manifest>
