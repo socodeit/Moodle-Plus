@@ -41,6 +41,14 @@ public class courseDetail extends AppCompatActivity {
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+        setupTabIcons();
+    }
+
+    private void setupTabIcons() {
+        tabLayout.getTabAt(0).setIcon(R.drawable.about_ico);
+        tabLayout.getTabAt(1).setIcon(R.drawable.assignment_ico);
+        tabLayout.getTabAt(2).setIcon(R.drawable.thread_ico);
+        tabLayout.getTabAt(3).setIcon(R.drawable.grade_ico2);
     }
 
     private void setupViewPager(ViewPager viewPager) {
