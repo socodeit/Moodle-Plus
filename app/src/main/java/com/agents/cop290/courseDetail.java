@@ -45,10 +45,10 @@ public class courseDetail extends AppCompatActivity {
     }
 
     private void setupTabIcons() {
-        tabLayout.getTabAt(0).setIcon(R.drawable.about_ico);
-        tabLayout.getTabAt(1).setIcon(R.drawable.assignment_ico);
-        tabLayout.getTabAt(2).setIcon(R.drawable.thread_ico);
-        tabLayout.getTabAt(3).setIcon(R.drawable.grade_ico2);
+        tabLayout.getTabAt(0).setIcon(R.drawable.ic_about);
+        tabLayout.getTabAt(1).setIcon(R.drawable.ic_assignment);
+        tabLayout.getTabAt(2).setIcon(R.drawable.ic_grade);
+        tabLayout.getTabAt(3).setIcon(R.drawable.ic_thread);
     }
 
     private void setupViewPager(ViewPager viewPager) {
