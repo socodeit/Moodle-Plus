@@ -29,7 +29,7 @@ public class courseDetail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_course_detail);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -47,8 +47,8 @@ public class courseDetail extends AppCompatActivity {
     private void setupTabIcons() {
         tabLayout.getTabAt(0).setIcon(R.drawable.ic_about);
         tabLayout.getTabAt(1).setIcon(R.drawable.ic_assignment);
-        tabLayout.getTabAt(2).setIcon(R.drawable.ic_grade);
-        tabLayout.getTabAt(3).setIcon(R.drawable.ic_thread);
+        tabLayout.getTabAt(2).setIcon(R.drawable.ic_thread);
+        tabLayout.getTabAt(3).setIcon(R.drawable.ic_grade);
     }
 
     private void setupViewPager(ViewPager viewPager) {
