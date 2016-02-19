@@ -7,10 +7,7 @@
         android:endColor="#2E7D32"
         android:startColor="#81C784"
         android:type="linear" />
-    <corners android:bottomRightRadius="8dp"
-        android:bottomLeftRadius="8dp"
-        android:topRightRadius="8dp"
-        android:topLeftRadius="8dp"
+    <corners android:radius="8dp"
         android:angle="90"
         android:centerColor="#4CAF50"
         android:endColor="#2E7D32"
