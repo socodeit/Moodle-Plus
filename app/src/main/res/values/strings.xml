@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">COP290</string>
+    <string name="app_name">Moodle Plus</string>
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
