@@ -12,12 +12,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +26,6 @@ import layout.threadsFragment;
 
 
 public class courseDetail extends AppCompatActivity {
-
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -48,56 +44,18 @@ public class courseDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_detail);
         rec =(RecyclerView) findViewById(R.id.Rview);
-          bar =(Toolbar) findViewById(R.id.toobar);
-        setSupportActionBar(bar);
+        //bar =(Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(bar);
         rec.setHasFixedSize(true);
-       adp= new MyAdapter(tab,icon,"ajay","ajaymahicha@gmail.com",R.drawable.iitd2);
+        adp= new MyAdapter(tab,icon,"ajay","ajaymahicha@gmail.com",R.drawable.iitd2);
         rec.setAdapter(adp);
-
-
-        final GestureDetector mGestureDetector = new GestureDetector(courseDetail.this, new GestureDetector.SimpleOnGestureListener() {
-
-            @Override public boolean onSingleTapUp(MotionEvent e) {
-                return true;
-            }
-
-        });
-        rec.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-            @Override
-            public boolean onInterceptTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
-                View child = recyclerView.findChildViewUnder(motionEvent.getX(), motionEvent.getY());
-
-
-                if (child != null && mGestureDetector.onTouchEvent(motionEvent)) {
-                    drawer.closeDrawers();
-                    Toast.makeText(courseDetail.this, "The Item Clicked is: " + recyclerView.getChildPosition(child), Toast.LENGTH_SHORT).show();
-
-                    return true;
-
-                }
-
-                return false;
-            }
-
-            @Override
-            public void onTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
-
-            }
-
-            @Override
-            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
-            }
-        });
         mang =new LinearLayoutManager(this);
         rec.setLayoutManager(mang);
         drawer = (DrawerLayout) findViewById(R.id.DrawerLayout);
-        togg=new ActionBarDrawerToggle(this,drawer,bar,R.string.navigation_drawer_open,R.string.navigation_drawer_close) {
+        togg=new ActionBarDrawerToggle(this,drawer,null,R.string.navigation_drawer_open,R.string.navigation_drawer_close) {
             @Override
             public void onDrawerOpened(View drawer) {
                 super.onDrawerOpened(drawer);
-
-
             }
             @Override
             public void onDrawerClosed(View drawerView) {
@@ -109,10 +67,10 @@ public class courseDetail extends AppCompatActivity {
         drawer.setDrawerListener(togg); // Drawer Listener set to the Drawer toggle
         togg.syncState();               // Finally we set the drawer toggle sync State
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+//
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
@@ -124,21 +82,24 @@ public class courseDetail extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-       // getMenuInflater().inflate(R.menu.activity_courses_list__students_drawer, menu);
+        getMenuInflater().inflate(R.menu.activity_courses_list__students_drawer, menu);
         return true;
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
 
-        if (togg.onOptionsItemSelected(item)) {
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
-
 
 
     private void setupTabIcons() {
