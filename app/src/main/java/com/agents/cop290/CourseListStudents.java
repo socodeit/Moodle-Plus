@@ -33,12 +33,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CourseListStudents extends AppCompatActivity {
-//
+    //
 //    //initialising array for courses
 //
 //
-String tab[] ={"Profile","Courses","Notifications","Grades","Log Out"};
-    int icon[]={R.drawable.p,R.drawable.co,R.drawable.notifications,R.drawable.ic_grade,R.drawable.logout};
+    String tab[] = {"Profile", "Courses", "Notifications", "Grades", "Log Out"};
+    int icon[] = {R.drawable.p, R.drawable.co, R.drawable.notifications, R.drawable.ic_grade, R.drawable.logout};
     Toolbar bar;
     RecyclerView rec;
     RecyclerView.Adapter adp;
@@ -65,41 +65,38 @@ String tab[] ={"Profile","Courses","Notifications","Grades","Log Out"};
         Bundle extras = i.getExtras();
         setContentView(R.layout.activity_course_list_students);
         setContentView(R.layout.activity_course_list_students);
-        name=extras.getString("first_name")+" "+extras.getString("last_name");
-         email =extras.getString("email");
-            rec =(RecyclerView) findViewById(R.id.recview);
-            rec.setHasFixedSize(true);
-            adp= new MyAdapter(tab,icon,name,email,R.drawable.iitd3);
-            rec.setAdapter(adp);
-            mang =new LinearLayoutManager(this);
-            rec.setLayoutManager(mang);
-            bar =(Toolbar) findViewById(R.id.toobar);
-            setSupportActionBar(bar);
-            drawer = (DrawerLayout) findViewById(R.id.DrawerLayout);
-            togg=new ActionBarDrawerToggle(this,drawer,bar,R.string.navigation_drawer_open,R.string.navigation_drawer_close) {
-                @Override
-                public void onDrawerOpened(View drawer) {
-                    super.onDrawerOpened(drawer);
-                }
+        name = extras.getString("first_name") + " " + extras.getString("last_name");
+        email = extras.getString("email");
+        rec = (RecyclerView) findViewById(R.id.recview);
+        rec.setHasFixedSize(true);
+        adp = new MyAdapter(tab, icon, name, email, R.drawable.iitd3);
+        rec.setAdapter(adp);
+        mang = new LinearLayoutManager(this);
+        rec.setLayoutManager(mang);
+        bar = (Toolbar) findViewById(R.id.toobar);
+        setSupportActionBar(bar);
+        drawer = (DrawerLayout) findViewById(R.id.DrawerLayout);
+        togg = new ActionBarDrawerToggle(this, drawer, bar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
+            @Override
+            public void onDrawerOpened(View drawer) {
+                super.onDrawerOpened(drawer);
+            }
 
-                @Override
-                public void onDrawerClosed(View drawerView) {
-                    super.onDrawerClosed(drawerView);
-                    // Code here will execute once drawer is closed
-                }
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+                // Code here will execute once drawer is closed
+            }
 
-            };
-            drawer.setDrawerListener(togg); // Drawer Listener set to the Drawer toggle
-            togg.syncState();               // Finally we set the drawer toggle sync State
+        };
+        drawer.setDrawerListener(togg); // Drawer Listener set to the Drawer toggle
+        togg.syncState();               // Finally we set the drawer toggle sync State
 
         final RequestQueue requestQueue = Volley.newRequestQueue(this);
 
 
-
         //receiving info about courses
         String url2 = LoginActivity.mainURL + "courses/list.json";
-
-        Toast.makeText(getApplicationContext(), url2, Toast.LENGTH_LONG).show();
 
 
         StringRequest myReq2 = new StringRequest(Request.Method.GET, url2, new Response.Listener<String>() {
@@ -107,7 +104,11 @@ String tab[] ={"Profile","Courses","Notifications","Grades","Log Out"};
             public void onResponse(String response) {
                 try {
                     //accessing course_info, current sem
+                    Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+
+                    //Convert String to JSON object
                     JSONObject course_response = new JSONObject(response);
+
                     Double current_sem = course_response.getDouble("current_sem");
                     JSONArray course_list = course_response.getJSONArray("courses");
 
@@ -120,7 +121,11 @@ String tab[] ={"Profile","Courses","Notifications","Grades","Log Out"};
                         String course_name = course_object.optString("code").toString() + " : " + course_object.optString("name").toString();
                         array_courses[i] = course_name;
                     }
-                    Toast.makeText(getApplicationContext(), "Nothing to show", Toast.LENGTH_LONG).show();
+                    run();
+
+
+                    // String abc = array_courses[0];
+                    //Toast.makeText(getApplicationContext(), abc, Toast.LENGTH_LONG).show();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -149,25 +154,14 @@ String tab[] ={"Profile","Courses","Notifications","Grades","Log Out"};
 
 
         //creating the listview of list of courses
-       array_courses[0]="asdf";
-        listView = (ListView) findViewById(R.id.course_list);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.simple_list, array_courses);
+        Boolean ac = array_courses == null;
+        String abc = String.valueOf(ac);
+        Toast.makeText(getApplicationContext(), abc, Toast.LENGTH_LONG).show();
 
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String item = parent.getItemAtPosition(position).toString();
-                String[] abcd = item.split(":");
-                String courseCODE = abcd[0];
-                Intent i = new Intent(CourseListStudents.this, courseDetail.class);
-                i.putExtra("COURSECODE", courseCODE);
-                i.putExtra("name",name);
-                i.putExtra("email",email);
-                startActivity(i);
-            }
-        });
-        }
+
+
+    }
+
         @Override
         public boolean onCreateOptionsMenu(Menu menu) {
             // Inflate the menu; this adds items to the action bar if it is present.
@@ -188,10 +182,34 @@ String tab[] ={"Profile","Courses","Notifications","Grades","Log Out"};
         }
 
         return super.onOptionsItemSelected(item);
+
+
     }
 
+    void run() {
+        listView = (ListView) findViewById(R.id.course_list);
 
-}
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.simple_list, array_courses);
+
+        listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String item = parent.getItemAtPosition(position).toString();
+                String[] abcd = item.split(":");
+                String courseCODE = abcd[0];
+                Intent i = new Intent(CourseListStudents.this, courseDetail.class);
+                i.putExtra("COURSECODE", courseCODE);
+                i.putExtra("name", name);
+                i.putExtra("email", email);
+                startActivity(i);
+            }
+        });
+    }
+
+    }
+
 
 
 

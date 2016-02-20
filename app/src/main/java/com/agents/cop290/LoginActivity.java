@@ -52,10 +52,12 @@ public class LoginActivity extends AppCompatActivity {
                 final String password = editable == null ? null : editable.toString();
 
 //                Progress Dialog Box
+                /*
                 final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,R.style.AppTheme_Dark_Dialog);
                 progressDialog.setIndeterminate(true);
                 progressDialog.setMessage("Authenticating...");
                 progressDialog.show();
+                */
 
                 //Sending GET request to server for login
                 //TODO : Adding exception for empty username and password
@@ -65,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
-                                progressDialog.dismiss();
+                               // progressDialog.dismiss();
                                 try {
                                     JSONObject response_json = new JSONObject(response);
                                     String success = response_json.getString("success");
@@ -80,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
                                         } else {
                                             position = "Student";
                                         }
-                                        Toast.makeText(getApplicationContext(), first_name + " " + position, Toast.LENGTH_LONG).show();
+                                        //Toast.makeText(getApplicationContext(), first_name + " " + position, Toast.LENGTH_LONG).show();
 
                                         //Creating new intent for next Activity
                                         Intent nextActivity = new Intent(LoginActivity.this,CourseListStudents.class);
@@ -106,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
 
-                        progressDialog.dismiss();
+                       // progressDialog.dismiss();
                         Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_LONG);
                     }
                 })
