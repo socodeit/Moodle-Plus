@@ -29,4 +29,10 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <!--  THEME FOR PROGRESS BAR -->
+    <style name="AppTheme.Dark.Dialog" parent="Theme.AppCompat.Dialog">
+        <item name="colorAccent">#ffffff</item>
+        <item name="android:textColorPrimary">#CCCCCC</item>
+        <item name="android:background">#2E2EFE</item>
+    </style>
 </resources>
