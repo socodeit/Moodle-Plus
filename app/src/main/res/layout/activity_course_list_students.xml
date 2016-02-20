@@ -10,7 +10,7 @@
     tools:context="com.agents.cop290.CourseListStudents"
     android:background="#ffffff">
 
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/welcomeMsg"
