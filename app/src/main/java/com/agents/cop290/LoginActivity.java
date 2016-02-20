@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
 
                             if(success.equals("true"))
                             {
-                                Intent nextActivity = new Intent(LoginActivity.this,courseDetail.class);
+                                Intent nextActivity = new Intent(LoginActivity.this,CourseListStudents.class);
 
                                 Bundle userpass = new Bundle();
                                 userpass.putString("username",username);
