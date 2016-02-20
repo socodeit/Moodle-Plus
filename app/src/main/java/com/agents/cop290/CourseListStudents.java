@@ -39,7 +39,7 @@ public class CourseListStudents extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_list_students);
-            rec =(RecyclerView) findViewById(R.id.RecyclerView);
+            rec =(RecyclerView) findViewById(R.id.recview);
             rec.setHasFixedSize(true);
             adp= new MyAdapter(tab,icon,"ajay","ajaymahicha@gmail.com",R.drawable.iitd3);
             rec.setAdapter(adp);
