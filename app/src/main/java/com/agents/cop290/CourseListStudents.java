@@ -109,9 +109,9 @@ public class CourseListStudents extends AppCompatActivity {
 //        }
 
     String[] array_courses;
-    String Cookie="";
-
-
+    private static final String SET_COOKIE_KEY = "Set-Cookie";
+    private static final String COOKIE_KEY = "Cookie";
+    private static final String SESSION_COOKIE = "sessionid";
 
     private static CourseListStudents _instance;
     private RequestQueue _requestQueue;
@@ -120,6 +120,7 @@ public class CourseListStudents extends AppCompatActivity {
     public static CourseListStudents get() {
         return _instance;
     }
+
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,7 +144,7 @@ public class CourseListStudents extends AppCompatActivity {
         //receiving Info from server
         String mainUrl="http://10.192.48.179:8000/";
         String url = mainUrl+"default/login.json?userid=" + username + "&password=" + password;
-        JsonObjectRequest myReq = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        MyJsonObjectRequest myReq = new MyJsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
@@ -162,7 +163,7 @@ public class CourseListStudents extends AppCompatActivity {
                     //adding Position, first name and last name to welcome message
                     final TextView welcomeMsg = (TextView) findViewById(R.id.welcomeMsg);
                     welcomeMsg.setText("Welcome" + " " + position + " " + first_name + " " + last_name);
-                    Toast.makeText(getApplicationContext(),Cookie,Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getApplicationContext(),"Hello",Toast.LENGTH_LONG).show();
 
 
                 } catch (JSONException e) {
@@ -176,14 +177,7 @@ public class CourseListStudents extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_LONG).show();
 
             }
-        }){
-            @Override
-            protected Response parseNetworkResponse(NetworkResponse response) {
-                Map headers = response.headers;
-                Cookie = (String) headers.get("Set-Cookie");
-                return super.parseNetworkResponse(response);
-            }
-        };
+        });
         _requestQueue.add(myReq);
 
         //receiving info about courses
@@ -205,7 +199,7 @@ public class CourseListStudents extends AppCompatActivity {
                         String course_name = course_object.optString("code").toString() + " : " + course_object.optString("name").toString();
                         array_courses[i] = course_name;
                     }
-                    Toast.makeText(getApplicationContext(), "Nothing to show",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), array_courses.length,Toast.LENGTH_LONG).show();
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -218,17 +212,55 @@ public class CourseListStudents extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_LONG).show();
 
             }
-        }){
-            @Override
-            public Map getHeaders() throws AuthFailureError {
-                Map headers = new HashMap();
-                if(!Cookie.equals(""))
-                    headers.put("Cookie", Cookie);
-                return headers;
-            }
-        };
+        });
         _requestQueue.add(myReq2);
     }
+
+    public RequestQueue getRequestQueue() {
+        return _requestQueue;
+    }
+
+
+    /**
+     * Checks the response headers for session cookie and saves it
+     * if it finds it.
+     * @param headers Response Headers.
+     */
+    public final void checkSessionCookie(Map<String, String> headers) {
+        if (headers.containsKey(SET_COOKIE_KEY)
+                && headers.get(SET_COOKIE_KEY).startsWith(SESSION_COOKIE)) {
+            String cookie = headers.get(SET_COOKIE_KEY);
+            if (cookie.length() > 0) {
+                String[] splitCookie = cookie.split(";");
+                String[] splitSessionId = splitCookie[0].split("=");
+                cookie = splitSessionId[1];
+                SharedPreferences.Editor prefEditor = _preferences.edit();
+                prefEditor.putString(SESSION_COOKIE, cookie);
+                prefEditor.commit();
+            }
+        }
+    }
+
+    /**
+     * Adds session cookie to headers if exists.
+     * @param headers
+     */
+    public final void addSessionCookie(Map<String, String> headers) {
+        String sessionId = _preferences.getString(SESSION_COOKIE, "");
+        if (sessionId.length() > 0) {
+            StringBuilder builder = new StringBuilder();
+            builder.append(SESSION_COOKIE);
+            builder.append("=");
+            builder.append(sessionId);
+            if (headers.containsKey(COOKIE_KEY)) {
+                builder.append("; ");
+                builder.append(headers.get(COOKIE_KEY));
+            }
+            headers.put(COOKIE_KEY, builder.toString());
+        }
+    }
+
+}
 
     //creating the listview of list of courses
 //            ListView listView;
@@ -249,7 +281,7 @@ public class CourseListStudents extends AppCompatActivity {
 
 
 
-    }
+
 
 
 

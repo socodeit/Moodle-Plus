@@ -43,7 +43,7 @@ public class courseDetail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_course_detail);
         rec =(RecyclerView) findViewById(R.id.RecyclerView);
         rec.setHasFixedSize(true);
         adp= new MyAdapter(tab,icon,"ajay","ajaymahicha@gmail.com",R.drawable.iitd3);
@@ -58,7 +58,7 @@ public class courseDetail extends AppCompatActivity {
             public void onDrawerOpened(View drawer) {
                 super.onDrawerOpened(drawer);
             }
-        setContentView(R.layout.activity_course_detail);
+        //setContentView(R.layout.activity_course_detail);
 
             @Override
             public void onDrawerClosed(View drawerView) {
