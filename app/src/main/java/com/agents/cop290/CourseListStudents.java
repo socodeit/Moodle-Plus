@@ -1,19 +1,22 @@
 package com.agents.cop290;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,11 +26,66 @@ public class CourseListStudents extends AppCompatActivity {
 
     //initialising array for courses
     String[] array_courses;
+    String tab[] ={"course","notification","grades","logout"};
+    int icon[]={R.drawable.iitd1,R.drawable.iitd2,R.drawable.iitd4,R.drawable.iitd3};
+    Toolbar bar;
+    RecyclerView rec;
+    RecyclerView.Adapter adp;
+    RecyclerView.LayoutManager mang;
+    DrawerLayout drawer;
+    ActionBarDrawerToggle togg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_list_students);
+            rec =(RecyclerView) findViewById(R.id.RecyclerView);
+            rec.setHasFixedSize(true);
+            adp= new MyAdapter(tab,icon,"ajay","ajaymahicha@gmail.com",R.drawable.iitd3);
+            rec.setAdapter(adp);
+            mang =new LinearLayoutManager(this);
+            rec.setLayoutManager(mang);
+            bar =(Toolbar) findViewById(R.id.toobar);
+            setSupportActionBar(bar);
+            drawer = (DrawerLayout) findViewById(R.id.DrawerLayout);
+            togg=new ActionBarDrawerToggle(this,drawer,bar,R.string.navigation_drawer_open,R.string.navigation_drawer_close) {
+                @Override
+                public void onDrawerOpened(View drawer) {
+                    super.onDrawerOpened(drawer);
+                }
+
+                @Override
+                public void onDrawerClosed(View drawerView) {
+                    super.onDrawerClosed(drawerView);
+                    // Code here will execute once drawer is closed
+                }
+
+            };
+            drawer.setDrawerListener(togg); // Drawer Listener set to the Drawer toggle
+            togg.syncState();               // Finally we set the drawer toggle sync State
+        }
+        @Override
+        public boolean onCreateOptionsMenu(Menu menu) {
+            // Inflate the menu; this adds items to the action bar if it is present.
+            //  getMenuInflater().inflate(R.menu.menu_main, menu);
+            return true;
+        }
+
+        @Override
+        public boolean onOptionsItemSelected(MenuItem item) {
+            // Handle action bar item clicks here. The action bar will
+            // automatically handle clicks on the Home/Up button, so long
+            // as you specify a parent activity in AndroidManifest.xml.
+            int id = item.getItemId();
+
+            //noinspection SimplifiableIfStatement
+            if (id == R.id.action_settings) {
+                return true;
+            }
+
+            return super.onOptionsItemSelected(item);
+        }
+
 
         Intent i = getIntent();
         Bundle extras = i.getExtras();
@@ -105,21 +163,9 @@ public class CourseListStudents extends AppCompatActivity {
             }
         });
 
-        //creating the listview of list of courses
-        ListView listView;
-        listView = (ListView) findViewById(R.id.course_list);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.activity_course_list_students, array_courses);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-        });
-
 
     }
 
 
 
-}
+
