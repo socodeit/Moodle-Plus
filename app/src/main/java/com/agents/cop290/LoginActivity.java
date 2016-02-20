@@ -1,5 +1,6 @@
 package com.agents.cop290;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -39,6 +40,13 @@ public class LoginActivity extends AppCompatActivity {
                 final String username = editable == null ? null : editable.toString();
                 editable = passwordField.getText();
                 final String password = editable == null ? null : editable.toString();
+
+                final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,R.style.AppTheme_Dark_Dialog);
+                progressDialog.setIndeterminate(true);
+                progressDialog.setMessage("Authenticating...");
+                progressDialog.show();
+
+
                 //TODO : Adding exception for empty username and password
                 String mainURL = "http://10.192.48.179:8000/";
                 final String url = mainURL+"default/login.json?userid="+username+"&password="+password;
@@ -48,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         try {
                             String success = response.getString("success");
-
+                            progressDialog.dismiss();
                             if(success.equals("true"))
                             {
                                 Intent nextActivity = new Intent(LoginActivity.this,CourseListStudents.class);
@@ -58,7 +66,6 @@ public class LoginActivity extends AppCompatActivity {
                                 userpass.putString("password",password);
 
                                 nextActivity.putExtras(userpass);
-
                                 startActivity(nextActivity);
                             }
                             else {

@@ -44,9 +44,6 @@ public class CourseListStudents extends AppCompatActivity {
     private RequestQueue _requestQueue;
     private SharedPreferences _preferences;
 
-    public static CourseListStudents get() {
-        return _instance;
-    }
 
 
     String tab[] ={"Courses","Notifications","Grades","Threads","Log Out"};
@@ -65,6 +62,9 @@ public class CourseListStudents extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_list_students);
 
+//        _instance = this;
+//        _preferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        _requestQueue = Volley.newRequestQueue(this);
         rec =(RecyclerView) findViewById(R.id.recview);
         bar =(Toolbar) findViewById(R.id.toobar);
         setSupportActionBar(bar);
@@ -181,7 +181,7 @@ public class CourseListStudents extends AppCompatActivity {
                     //adding Position, first name and last name to welcome message
                     final TextView welcomeMsg = (TextView) findViewById(R.id.welcomeMsg);
                     welcomeMsg.setText("Welcome" + " " + position + " " + first_name + " " + last_name);
-                    Toast.makeText(getApplicationContext(),Cookie,Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getApplicationContext(),Cookie,Toast.LENGTH_LONG).show();
 
 
                 } catch (JSONException e) {
@@ -195,15 +195,16 @@ public class CourseListStudents extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_LONG).show();
 
             }
-        }){
-            @Override
-            protected Response parseNetworkResponse(NetworkResponse response) {
-                Map headers = response.headers;
-                Cookie = (String) headers.get("Set-Cookie");
-                return super.parseNetworkResponse(response);
-            }
-        };
-        _requestQueue.add(myReq);
+        });
+//        {
+//            @Override
+//            protected Response parseNetworkResponse(NetworkResponse response) {
+//                Map headers = response.headers;
+//                Cookie = (String) headers.get("Set-Cookie");
+//                return super.parseNetworkResponse(response);
+//            }
+//        };
+//        _requestQueue.add(myReq);
 
         //receiving info about courses
         String url2 = mainUrl+"courses/list.json";
@@ -212,7 +213,7 @@ public class CourseListStudents extends AppCompatActivity {
             public void onResponse(JSONObject course_response) {
                 try {
                     //accessing course_info, current sem
-                    //Double current_sem = course_response.getDouble("current_sem");
+                    Double current_sem = course_response.getDouble("current_sem");
                     JSONArray course_list = course_response.getJSONArray("courses");
 
                     //adding all course names to listview's string array
@@ -224,7 +225,7 @@ public class CourseListStudents extends AppCompatActivity {
                         String course_name = course_object.optString("code").toString() + " : " + course_object.optString("name").toString();
                         array_courses[i] = course_name;
                     }
-                    Toast.makeText(getApplicationContext(), "Nothing to show",Toast.LENGTH_LONG).show();
+                   // Toast.makeText(getApplicationContext(), "Nothing to show",Toast.LENGTH_LONG).show();
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -237,17 +238,44 @@ public class CourseListStudents extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_LONG).show();
 
             }
-        }){
+        });
+//        {
+//            @Override
+//            public Map getHeaders() throws AuthFailureError {
+//                Map headers = new HashMap();
+//                if(!Cookie.equals(""))
+//                    headers.put("Cookie", Cookie);
+//                return headers;
+//            }
+//        };
+//        _requestQueue.add(myReq2);
+
+
+        //creating the listview of list of courses
+
+        listView = (ListView) findViewById(R.id.course_list);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.activity_course_list_students, array_courses);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public Map getHeaders() throws AuthFailureError {
-                Map headers = new HashMap();
-                if(!Cookie.equals(""))
-                    headers.put("Cookie", Cookie);
-                return headers;
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            String item = parent.getItemAtPosition(position).toString();
+                String[] abcd = item.split(":");
+                String courseCODE = abcd[0];
+                Intent i = new Intent(CourseListStudents.this, courseDetail.class);
+                i.putExtra("COURSECODE", courseCODE);
+                startActivity(i);
             }
-        };
-        _requestQueue.add(myReq2);
+        });
+
     }
+
+
+//
+
+
+
+
 
 
 
