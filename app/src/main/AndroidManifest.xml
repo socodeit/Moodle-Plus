@@ -25,7 +25,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.agents.cop290.MainActivity" />
         </activity>
-        <activity android:name=".CourseListStudents" />
+        <activity android:name=".CourseListStudents"
+            android:theme="@style/MyMaterialTheme"/>
         <activity
             android:name=".courseDetail"
             android:theme="@style/MyMaterialTheme" />

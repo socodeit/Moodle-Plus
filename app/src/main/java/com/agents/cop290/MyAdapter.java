@@ -1,5 +1,6 @@
 package com.agents.cop290;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +33,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             ImageView profile;
             TextView Name;
             TextView email;
+            Context cxt;
 
 
             public ViewHolder(View itemView,int ViewType) {                 // Creating ViewHolder Constructor with View and viewType As a parameter
@@ -41,6 +43,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 // Here we set the appropriate view in accordance with the the view type as passed when the holder object is created
 
                 if(ViewType == TYPE_ITEM) {
+
                     textView = (TextView) itemView.findViewById(R.id.rowText); // Creating TextView object with the id of textView from item_row.xml
                     imageView = (ImageView) itemView.findViewById(R.id.rowIcon);// Creating ImageView object with the id of ImageView from item_row.xml
                     Holderid = 1;                                               // setting holder id as 1 as the object being populated are of type item row
@@ -54,8 +57,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                     Holderid = 0;                                                // Setting holder id = 0 as the object being populated are of type header view
                 }
             }
-
-
         }
 
 
