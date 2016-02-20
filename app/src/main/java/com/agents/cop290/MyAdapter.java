@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-    public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
         private static final int TYPE_HEADER = 0;  // Declaring Variable to Understand which View is being worked on
         // IF the view under inflation and population is header or Item
@@ -117,8 +117,7 @@ import android.widget.TextView;
                 holder.imageView.setImageResource(mIcons[position -1]);// Settimg the image with array of our icons
             }
             else{
-
-                holder.profile.setImageResource(profile);           // Similarly we set the resources for header view
+              //  holder.profile.setImageResource(profile);           // Similarly we set the resources for header view
                 holder.Name.setText(name);
                 holder.email.setText(email);
             }

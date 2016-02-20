@@ -12,9 +12,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-
-import com.agents.cop290.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +31,8 @@ public class courseDetail extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
-    String tab[] ={"course","notification","grades","logout"};
-    int icon[]={R.drawable.iitd1,R.drawable.iitd2,R.drawable.iitd4,R.drawable.iitd3};
+    String tab[] ={"Courses","Notifications","Grades","Threads","Log Out"};
+    int icon[]={R.drawable.co,R.drawable.notifications,R.drawable.ic_grade,R.drawable.ic_thread,R.drawable.logout};
     Toolbar bar;
     RecyclerView rec;
     RecyclerView.Adapter adp;
@@ -44,22 +44,20 @@ public class courseDetail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_detail);
-        rec =(RecyclerView) findViewById(R.id.RecyclerView);
-        rec.setHasFixedSize(true);
-        adp= new MyAdapter(tab,icon,"ajay","ajaymahicha@gmail.com",R.drawable.iitd3);
-        rec.setAdapter(adp);
-        mang =new LinearLayoutManager(this);
-        rec.setLayoutManager(mang);
-        bar =(Toolbar) findViewById(R.id.toobar);
+        rec =(RecyclerView) findViewById(R.id.Rview);
+          bar =(Toolbar) findViewById(R.id.toobar);
         setSupportActionBar(bar);
+        rec.setHasFixedSize(true);
+       adp= new MyAdapter(tab,icon,"ajay","ajaymahicha@gmail.com",R.drawable.iitd2);
+        rec.setAdapter(adp);
+       mang =new LinearLayoutManager(this);
+        rec.setLayoutManager(mang);
         drawer = (DrawerLayout) findViewById(R.id.DrawerLayout);
         togg=new ActionBarDrawerToggle(this,drawer,bar,R.string.navigation_drawer_open,R.string.navigation_drawer_close) {
             @Override
             public void onDrawerOpened(View drawer) {
                 super.onDrawerOpened(drawer);
             }
-        //setContentView(R.layout.activity_course_detail);
-
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
@@ -82,6 +80,28 @@ public class courseDetail extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
         setupTabIcons();
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.activity_courses_list__students_drawer, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
     private void setupTabIcons() {
         tabLayout.getTabAt(0).setIcon(R.drawable.ic_about);
