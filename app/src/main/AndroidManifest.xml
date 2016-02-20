@@ -25,15 +25,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.agents.cop290.MainActivity" />
         </activity>
-        <activity android:name=".CourseListStudents"
-            android:theme="@style/MyMaterialTheme"/>
+        <activity
+            android:name=".CourseListStudents"
+            android:theme="@style/MyMaterialTheme" />
         <activity
             android:name=".courseDetail"
             android:theme="@style/MyMaterialTheme" />
         <activity android:name=".aboutCourseFragment" />
         <activity android:name=".assignmentFragment" />
         <activity android:name=".gradesFragment" />
-        <activity android:name=".threadsFragment"></activity>
+        <activity android:name=".threadsFragment" />
     </application>
 
 </manifest>
