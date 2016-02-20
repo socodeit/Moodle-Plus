@@ -13,10 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -32,9 +30,10 @@ public class courseDetail extends AppCompatActivity {
    // private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    public String courseCode="cop290";
 
-    String tab[] ={"Profile","Courses","Notifications","Grades","Log Out"};
-    int icon[]={R.drawable.p,R.drawable.co,R.drawable.notifications,R.drawable.ic_grade,R.drawable.logout};
+    String tab[] ={"Courses","Notifications","Grades","Threads","Log Out"};
+    int icon[]={R.drawable.co,R.drawable.notifications,R.drawable.ic_grade,R.drawable.ic_thread,R.drawable.logout};
     Toolbar bar;
     RecyclerView rec;
     RecyclerView.Adapter adp;
@@ -54,66 +53,6 @@ public class courseDetail extends AppCompatActivity {
         rec.setHasFixedSize(true);
         adp= new MyAdapter(tab,icon,extras.getString("name"),extras.getString("email"),R.drawable.iitd2);
         rec.setAdapter(adp);
-
-        final GestureDetector mGestureDetector = new GestureDetector(courseDetail.this, new GestureDetector.SimpleOnGestureListener() {
-
-            @Override public boolean onSingleTapUp(MotionEvent e) {
-                return true;
-            }
-
-        });
-        rec.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-            @Override
-            public boolean onInterceptTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
-                View child = recyclerView.findChildViewUnder(motionEvent.getX(), motionEvent.getY());
-
-
-                if (child != null && mGestureDetector.onTouchEvent(motionEvent)) {
-                    drawer.closeDrawers();
-                   // Toast.makeText(courseDetail.this, "The Item Clicked is: " + recyclerView.getChildPosition(child), Toast.LENGTH_SHORT).show();
-                    switch (recyclerView.getChildAdapterPosition(child)) {
-                        case 1:
-                            Intent nextActivity = new Intent(courseDetail.this, profile.class);
-                            startActivity(nextActivity);
-                            break;
-                        case 3:
-                            nextActivity = new Intent(courseDetail.this, notifications.class);
-                            startActivity(nextActivity);
-                            break;
-                        case 2:
-                            nextActivity = new Intent(courseDetail.this, all_courses.class);
-                            startActivity(nextActivity);
-                            break;
-                        case 4:
-                            nextActivity = new Intent(courseDetail.this, grades.class);
-                            startActivity(nextActivity);
-                            break;
-                        case 5:
-                            LoginActivity.cookie="";
-                            nextActivity = new Intent(courseDetail.this, LoginActivity.class);
-                            startActivity(nextActivity);
-                            break;
-
-                    }
-
-
-                    return true;
-
-                }
-
-                return false;
-            }
-
-            @Override
-            public void onTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
-
-            }
-
-            @Override
-            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
-            }
-        });
         mang =new LinearLayoutManager(this);
         rec.setLayoutManager(mang);
         drawer = (DrawerLayout) findViewById(R.id.DrawerLayout);
@@ -176,10 +115,23 @@ public class courseDetail extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new aboutFragment(), "ABOUT");
-        adapter.addFragment(new assignmentFragment(), "ASSIGNMENT");
-        adapter.addFragment(new threadsFragment(),"THREADS");
-        adapter.addFragment(new gradesFragment(), "GRADES");
+        Bundle detail = new Bundle();
+        detail.putString("courseCode", courseCode);
+
+        aboutFragment aboutFragmentobj = new aboutFragment();
+        assignmentFragment assignmentFragmentobj= new assignmentFragment();
+        threadsFragment threadsFragmentobj = new threadsFragment();
+        gradesFragment gradesFragmentobj = new gradesFragment();
+
+        aboutFragmentobj.setArguments(detail);
+        assignmentFragmentobj.setArguments(detail);
+        threadsFragmentobj.setArguments(detail);
+        gradesFragmentobj.setArguments(detail);
+
+        adapter.addFragment(aboutFragmentobj, "ABOUT");
+        adapter.addFragment(assignmentFragmentobj, "ASSIGNMENT");
+        adapter.addFragment(threadsFragmentobj,"THREADS");
+        adapter.addFragment(gradesFragmentobj, "GRADES");
         viewPager.setAdapter(adapter);
     }
 

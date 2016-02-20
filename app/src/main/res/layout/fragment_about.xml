@@ -1,21 +1,57 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="layout.aboutFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="169dp"
+        android:layout_height="169dp"
+        android:id="@+id/imageView"
+        android:src="@drawable/ic_book"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button"
-        android:layout_gravity="center" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Design Practices in Computer Science"
+        android:id="@+id/courseTitle"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:textSize="30dp"
+        android:textAlignment="center"
+        android:textStyle="bold" />
 
-</FrameLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="courseDesc"
+        android:id="@+id/courseDesc"
+        android:layout_below="@+id/courseTitle"
+        android:layout_centerHorizontal="true"
+        android:textStyle="italic"
+        android:textSize="25dp"
+        android:textAlignment="center" />
+
+
+
+    </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>
+<!--</ScrollView>-->
