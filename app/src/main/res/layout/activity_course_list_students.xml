@@ -12,24 +12,30 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:id="@+id/welcomeMsg"
         android:textColor="#020000"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:foreground="#ffffff" />
 
     <ListView
         android:id="@+id/course_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/welcomeMsg"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:foreground="#4864f2"
+
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/welcomeMsg">
+
 
     </ListView>
+
     <android.support.v4.widget.DrawerLayout
 
         xmlns:android="http://schemas.android.com/apk/res/android"
