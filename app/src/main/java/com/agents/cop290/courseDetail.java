@@ -14,6 +14,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.agents.cop290.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,6 +58,7 @@ public class courseDetail extends AppCompatActivity {
             public void onDrawerOpened(View drawer) {
                 super.onDrawerOpened(drawer);
             }
+        setContentView(R.layout.activity_course_detail);
 
             @Override
             public void onDrawerClosed(View drawerView) {
@@ -83,8 +86,8 @@ public class courseDetail extends AppCompatActivity {
     private void setupTabIcons() {
         tabLayout.getTabAt(0).setIcon(R.drawable.ic_about);
         tabLayout.getTabAt(1).setIcon(R.drawable.ic_assignment);
-        tabLayout.getTabAt(2).setIcon(R.drawable.ic_grade);
-        tabLayout.getTabAt(3).setIcon(R.drawable.ic_thread);
+        tabLayout.getTabAt(2).setIcon(R.drawable.ic_thread);
+        tabLayout.getTabAt(3).setIcon(R.drawable.ic_grade);
     }
 
     private void setupViewPager(ViewPager viewPager) {

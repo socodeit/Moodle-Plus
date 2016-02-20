@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
                 editable = passwordField.getText();
                 final String password = editable == null ? null : editable.toString();
                 //TODO : Adding exception for empty username and password
-                String mainURL = "http://192.168.0.112:8000/";
+                String mainURL = "http://10.192.48.179:8000/";
                 final String url = mainURL+"default/login.json?userid="+username+"&password="+password;
 
                 JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
