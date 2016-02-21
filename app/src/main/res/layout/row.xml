@@ -23,6 +23,5 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Medium Text"
         android:id="@+id/rowText"
-        android:gravity="center"
         android:textColor="#000000"/>
 </LinearLayout>

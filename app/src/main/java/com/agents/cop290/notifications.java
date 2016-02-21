@@ -57,6 +57,10 @@ public class notifications extends AppCompatActivity {
                         sno[i]=i;
                         to[i]=i+"  "+notification[i]+"    "+time[i];
                     }
+                    ListView listView = (ListView) findViewById(R.id.lv);
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.simple_new,to );
+                    listView.setAdapter(adapter);
+
 
                 }catch (JSONException e)
                 {
@@ -86,9 +90,6 @@ public class notifications extends AppCompatActivity {
             }
         };
         requestQueue.add(req);
-        ListView listView = (ListView) findViewById(R.id.lv);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.simple_list,to );
-        listView.setAdapter(adapter);
 
     }
 }

@@ -6,13 +6,5 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:textAppearance="?android:attr/textAppearanceListItemSmall"
-    android:gravity="center"
-    android:minHeight="?android:attr/listPreferredItemHeightSmall"
-    android:textSize="20sp"
-    android:textColor="#000000"
-    android:background="@drawable/course_gradient"
-
-
-
-
-    />
+    android:gravity="center_vertical"
+    android:minHeight="?android:attr/listPreferredItemHeightSmall" />
