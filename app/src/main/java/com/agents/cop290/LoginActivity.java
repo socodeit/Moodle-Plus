@@ -2,26 +2,20 @@ package com.agents.cop290;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
-import android.util.Log;
 import android.view.View;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.agents.cop290.*;
-import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
-import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -29,9 +23,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
     //cookie stores cookies
@@ -89,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
                                         } else {
                                             position = "Student";
                                         }
-//                                        Toast.makeText(getApplicationContext(), first_name + " " + position, Toast.LENGTH_LONG).show();
+                                        Toast.makeText(getApplicationContext(), first_name + " " + position, Toast.LENGTH_LONG).show();
 
                                         //Creating new intent for next Activity
                                         Intent nextActivity = new Intent(LoginActivity.this,CourseListStudents.class);
