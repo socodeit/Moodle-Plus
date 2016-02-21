@@ -37,8 +37,8 @@ public class CourseListStudents extends AppCompatActivity {
 //    //initialising array for courses
 //
 //
-    String tab[] ={"course","notification","grades","logout"};
-    int icon[]={R.drawable.iitd1,R.drawable.iitd2,R.drawable.iitd4,R.drawable.iitd3};
+String tab[] ={"Profile","Courses","Notifications","Grades","Log Out"};
+    int icon[]={R.drawable.p,R.drawable.co,R.drawable.notifications,R.drawable.ic_grade,R.drawable.logout};
     Toolbar bar;
     RecyclerView rec;
     RecyclerView.Adapter adp;
@@ -151,7 +151,7 @@ public class CourseListStudents extends AppCompatActivity {
         //creating the listview of list of courses
 
         listView = (ListView) findViewById(R.id.course_list);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.activity_course_list_students, array_courses);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.simple_list, array_courses);
 
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

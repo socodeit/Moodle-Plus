@@ -1,7 +1,11 @@
 package com.agents.cop290;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -21,14 +25,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class notifications extends AppCompatActivity {
-
+    String [] notification;
+    String [] time;
+    int[] sno;
+    String [] to;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notifications);
         final RequestQueue requestQueue = Volley.newRequestQueue(this);
         //TODO : Adding exception for empty username and password
-
+        TextView t = (TextView) findViewById(R.id.notibar);
+        Typeface tf = Typeface.createFromAsset(getAssets(),
+                "fonts/CabinSketch-Regular.otf");
+        t.setTypeface(tf);
         final String url =LoginActivity.mainURL+"/default/notifications.json";
 
         JsonObjectRequest req=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -36,12 +46,16 @@ public class notifications extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 try {
                     JSONArray notif =response.getJSONArray("notifications");
-                    String [] notification = new String[notif.length()];
-                    String [] time =new String[notif.length()];
+                    notification = new String[notif.length()];
+                    time =new String[notif.length()];
+                    sno =new int[notif.length()];
+                    to  =new String[notif.length()];
                     for(int i=0;i<notif.length();i++) {
                         JSONObject n = notif.getJSONObject(i);
                         notification[i]=n.getString("description");
                         time[i]=n.getString("created_at");
+                        sno[i]=i;
+                        to[i]=i+"  "+notification[i]+"    "+time[i];
                     }
 
                 }catch (JSONException e)
@@ -72,5 +86,9 @@ public class notifications extends AppCompatActivity {
             }
         };
         requestQueue.add(req);
+        ListView listView = (ListView) findViewById(R.id.lv);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.simple_list,to );
+        listView.setAdapter(adapter);
+
     }
 }
