@@ -198,7 +198,6 @@ public class courseDetail extends AppCompatActivity {
         adapter.addFragment(threadsFragmentobj,"THREADS");
         adapter.addFragment(gradesFragmentobj, "GRADES");
         viewPager.setAdapter(adapter);
-        viewPager.setCurrentItem(3,false);
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {

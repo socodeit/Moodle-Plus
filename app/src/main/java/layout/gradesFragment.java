@@ -39,17 +39,19 @@ public class gradesFragment extends Fragment {
         // Required empty public constructor
     }
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_grades, container, false);
+    }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public void onActivityCreated(Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View view= inflater.inflate(R.layout.fragment_grades, container, false);
-
+        super.onActivityCreated(savedInstanceState);
 //        final String  courseCode = getArguments().getString("courseCode");
         final String  courseCode = "cop290";
-        final ListView gradeList = (ListView)view.findViewById(R.id.gradeList);
-        final Context context=this.getActivity();
+        final ListView gradeList = (ListView)getActivity().findViewById(R.id.gradeList);
+        final Context context=getActivity();
 
 
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
@@ -99,9 +101,6 @@ public class gradesFragment extends Fragment {
         };
 
         requestQueue.add(stringRequest);
-
-
-        return view;
     }
 
 }
