@@ -64,7 +64,6 @@ public class CourseListStudents extends AppCompatActivity {
         Intent i = getIntent();
         Bundle extras = i.getExtras();
         setContentView(R.layout.activity_course_list_students);
-        setContentView(R.layout.activity_course_list_students);
         name = extras.getString("first_name") + " " + extras.getString("last_name");
         email = extras.getString("email");
         rec = (RecyclerView) findViewById(R.id.recview);
