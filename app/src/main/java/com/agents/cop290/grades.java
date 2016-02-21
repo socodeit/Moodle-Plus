@@ -51,7 +51,7 @@ public class grades extends AppCompatActivity {
                         JSONObject m=grades.getJSONObject(i);
                         double d=m.getDouble("score")*m.getDouble("weightage")/m.getDouble("out_of");
                         d = Math.round(d*100)/100.0d;
-                        all[i]=i+1+"   "+n.getString("code")+"  "+m.getString("name")+"  "+m.getDouble("score")+"/"+m.getDouble("out_of")+"  "+Double.toString(d);
+                        all[i]=i+1+"    "+n.getString("code")+"     "+m.getString("name")+"      "+m.getDouble("score")+"/"+m.getDouble("out_of")+"      "+Double.toString(m.getDouble("weightage"))+"    "+Double.toString(d);
                     }
 
                     ListView listView = (ListView) findViewById(R.id.grad);

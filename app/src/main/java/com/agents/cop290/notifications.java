@@ -55,7 +55,7 @@ public class notifications extends AppCompatActivity {
                         notification[i]=n.getString("description");
                         time[i]=n.getString("created_at");
                         sno[i]=i;
-                        to[i]=i+"  "+notification[i]+"    "+time[i];
+                        to[i]=notification[i]+"\n                                                    "+time[i];
                     }
                     ListView listView = (ListView) findViewById(R.id.lv);
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.simple_new,to );

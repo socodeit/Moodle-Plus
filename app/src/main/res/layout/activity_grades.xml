@@ -11,19 +11,23 @@
         android:text="Grades"
         android:id="@+id/gradebar"
         android:textSize="45dp"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="#000000"
+        android:background="#FFFFFF"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="S.No Course    Grade Item    Score   Weight   Absolute Marks"
+        android:text="S.No   Course    Grade Item        Score       Weight        Absolute"
         android:id="@+id/sbar"
-        android:background="#22245f"/>
+        android:textColor="#FFFFFF"
+        android:background="#000000"/>
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/grad"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:background="#FFFFFF"/>
 </LinearLayout>
