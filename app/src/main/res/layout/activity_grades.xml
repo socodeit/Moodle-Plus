@@ -8,8 +8,8 @@
         android:layout_width="match_parent"
         android:layout_height="53dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Notifications"
-        android:id="@+id/notibar"
+        android:text="Grades"
+        android:id="@+id/gradebar"
         android:textSize="45dp"
         android:gravity="center"/>
 

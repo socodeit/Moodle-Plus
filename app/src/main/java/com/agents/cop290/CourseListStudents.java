@@ -60,13 +60,12 @@ public class CourseListStudents extends AppCompatActivity {
 
     String[] array_courses;
     ListView listView;
-    Intent i ;
-    Bundle extras ;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        i = getIntent();
-         extras = i.getExtras();
+        Intent i = getIntent();
+        Bundle extras = i.getExtras();
+        setContentView(R.layout.activity_course_list_students);
         setContentView(R.layout.activity_course_list_students);
         name = extras.getString("first_name") + " " + extras.getString("last_name");
         email = extras.getString("email");
@@ -74,7 +73,6 @@ public class CourseListStudents extends AppCompatActivity {
         rec.setHasFixedSize(true);
         adp = new MyAdapter(tab, icon, name, email, R.drawable.iitd3);
         rec.setAdapter(adp);
-
         final GestureDetector mGestureDetector = new GestureDetector(CourseListStudents.this, new GestureDetector.SimpleOnGestureListener() {
 
             @Override public boolean onSingleTapUp(MotionEvent e) {
@@ -134,7 +132,6 @@ public class CourseListStudents extends AppCompatActivity {
 
             }
         });
-
         mang = new LinearLayoutManager(this);
         rec.setLayoutManager(mang);
         bar = (Toolbar) findViewById(R.id.toobar);
@@ -263,15 +260,9 @@ public class CourseListStudents extends AppCompatActivity {
                 String courseCODE = abcd[0];
                 //Toast.makeText(getApplicationContext(), courseCODE,Toast.LENGTH_LONG).show();
                 Intent i = new Intent(CourseListStudents.this, courseDetail.class);
-                Bundle userDetails = new Bundle();
-                userDetails.putString("first_name",extras.getString("first_name"));
-                userDetails.putString("last_name",extras.getString("last_name"));
-                userDetails.putString("id",extras.getString("id"));
-                userDetails.putString("entry_no",extras.getString("entry_no"));
-                userDetails.putInt("type_", extras.getInt("type_"));
-                userDetails.putString("email", extras.getString("email"));
-                userDetails.putString("COURSECODE", courseCODE);
-               i.putExtras(userDetails);
+                i.putExtra("COURSECODE", courseCODE);
+                i.putExtra("name", name);
+                i.putExtra("email", email);
                 startActivity(i);
             }
         });
