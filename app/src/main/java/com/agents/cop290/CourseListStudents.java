@@ -45,6 +45,8 @@ public class CourseListStudents extends AppCompatActivity {
     RecyclerView.LayoutManager mang;
     DrawerLayout drawer;
     ActionBarDrawerToggle togg;
+    String name;
+    String email;
 //
 //    @Override
 //    protected void onCreate(Bundle savedInstanceState) {
@@ -59,11 +61,15 @@ public class CourseListStudents extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent i = getIntent();
+        Bundle extras = i.getExtras();
         setContentView(R.layout.activity_course_list_students);
         setContentView(R.layout.activity_course_list_students);
+        name=extras.getString("first_name")+" "+extras.getString("last_name");
+         email =extras.getString("email");
             rec =(RecyclerView) findViewById(R.id.recview);
             rec.setHasFixedSize(true);
-            adp= new MyAdapter(tab,icon,"ajay","ajaymahicha@gmail.com",R.drawable.iitd3);
+            adp= new MyAdapter(tab,icon,name,email,R.drawable.iitd3);
             rec.setAdapter(adp);
             mang =new LinearLayoutManager(this);
             rec.setLayoutManager(mang);
@@ -88,8 +94,7 @@ public class CourseListStudents extends AppCompatActivity {
 
         final RequestQueue requestQueue = Volley.newRequestQueue(this);
 
-        Intent i = getIntent();
-        Bundle extras = i.getExtras();
+
 
         //receiving info about courses
         String url2 = LoginActivity.mainURL + "courses/list.json";
@@ -157,6 +162,8 @@ public class CourseListStudents extends AppCompatActivity {
                 String courseCODE = abcd[0];
                 Intent i = new Intent(CourseListStudents.this, courseDetail.class);
                 i.putExtra("COURSECODE", courseCODE);
+                i.putExtra("name",name);
+                i.putExtra("email",email);
                 startActivity(i);
             }
         });
@@ -164,7 +171,7 @@ public class CourseListStudents extends AppCompatActivity {
         @Override
         public boolean onCreateOptionsMenu(Menu menu) {
             // Inflate the menu; this adds items to the action bar if it is present.
-            //  getMenuInflater().inflate(R.menu.menu_main, menu);
+            // getMenuInflater().inflate(R.menu.menu_main, menu);
             return true;
         }
 

@@ -91,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
                                         userDetails.putString("id",user_json.getString("id"));
                                         userDetails.putString("entry_no",user_json.getString("entry_no"));
                                         userDetails.putInt("type_", user_json.getInt("type_"));
-
+                                        userDetails.putString("email",user_json.getString("email"));
                                         nextActivity.putExtras(userDetails);
                                         startActivity(nextActivity);
                                     }

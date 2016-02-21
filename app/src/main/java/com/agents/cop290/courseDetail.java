@@ -1,5 +1,6 @@
 package com.agents.cop290;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -26,7 +27,7 @@ import layout.threadsFragment;
 
 
 public class courseDetail extends AppCompatActivity {
-    private Toolbar toolbar;
+   // private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
@@ -43,11 +44,13 @@ public class courseDetail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_detail);
+        Intent i = getIntent();
+        Bundle extras = i.getExtras();
         rec =(RecyclerView) findViewById(R.id.Rview);
         //bar =(Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(bar);
         rec.setHasFixedSize(true);
-        adp= new MyAdapter(tab,icon,"ajay","ajaymahicha@gmail.com",R.drawable.iitd2);
+        adp= new MyAdapter(tab,icon,extras.getString("name"),extras.getString("email"),R.drawable.iitd2);
         rec.setAdapter(adp);
         mang =new LinearLayoutManager(this);
         rec.setLayoutManager(mang);

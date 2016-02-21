@@ -31,7 +31,7 @@ public class notifications extends AppCompatActivity {
 
         final String url =LoginActivity.mainURL+"/default/notifications.json";
 
-        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest req=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
@@ -71,6 +71,6 @@ public class notifications extends AppCompatActivity {
 
             }
         };
-        requestQueue.add(jsonObjectRequest);
+        requestQueue.add(req);
     }
 }
