@@ -2,21 +2,23 @@
 <!--Reference 1-->
 
 <!--<android.support.design.widget.CoordinatorLayout-->
-    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent">-->
+<!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="match_parent">-->
 
-    <android.support.v4.widget.DrawerLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/DrawerLayout"
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/DrawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:elevation="7dp">
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:elevation="7dp">
-
-
-
+        android:orientation="vertical">
 
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
@@ -24,12 +26,12 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
             <!--<android.support.v7.widget.Toolbar-->
-                <!--android:id="@+id/toolbar"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="?attr/actionBarSize"-->
-                <!--android:background="?attr/colorPrimary"-->
-                <!--app:layout_scrollFlags="scroll|enterAlways"-->
-                <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />-->
+            <!--android:id="@+id/toolbar"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="?attr/actionBarSize"-->
+            <!--android:background="?attr/colorPrimary"-->
+            <!--app:layout_scrollFlags="scroll|enterAlways"-->
+            <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />-->
 
             <android.support.design.widget.TabLayout
                 android:id="@+id/tabs"
@@ -37,6 +39,7 @@
                 android:layout_height="wrap_content"
                 app:tabMode="fixed"
                 app:tabGravity="fill"/>
+
         </android.support.design.widget.AppBarLayout>
 
         <android.support.v4.view.ViewPager
@@ -44,28 +47,28 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"  />
+    </LinearLayout>
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:orientation="vertical">-->
+    <!--</LinearLayout>-->
+    <!--<include-->
+    <!--android:id="@+id/toobar"-->
+    <!--layout="@layout/bar"-->
+    <!--></include>-->
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/Rview"
+        android:layout_width="320dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        android:background="#ffffff"
+        android:scrollbars="vertical">
+
+    </android.support.v7.widget.RecyclerView>
 
 
-        <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:orientation="vertical">-->
-        <!--</LinearLayout>-->
-        <!--<include-->
-            <!--android:id="@+id/toobar"-->
-            <!--layout="@layout/bar"-->
-            <!--></include>-->
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/Rview"
-            android:layout_width="320dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="left"
-            android:background="#ffffff"
-            android:scrollbars="vertical">
-
-        </android.support.v7.widget.RecyclerView>
-
-
-    </android.support.v4.widget.DrawerLayout>
+</android.support.v4.widget.DrawerLayout>
     <!--</android.support.design.widget.CoordinatorLayout>-->
