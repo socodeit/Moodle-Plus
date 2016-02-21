@@ -26,8 +26,8 @@ import java.io.UnsupportedEncodingException;
 
 public class LoginActivity extends AppCompatActivity {
     //cookie stores cookies
-    static String cookie;
-    static String mainURL;
+    public static String cookie;
+    public static String mainURL;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

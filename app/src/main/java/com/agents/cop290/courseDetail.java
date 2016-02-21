@@ -49,6 +49,8 @@ public class courseDetail extends AppCompatActivity {
         setContentView(R.layout.activity_course_detail);
         Intent i = getIntent();
         Bundle extras = i.getExtras();
+        courseCode=extras.getString("COURSECODE");
+
         rec =(RecyclerView) findViewById(R.id.Rview);
         //bar =(Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(bar);
@@ -196,6 +198,7 @@ public class courseDetail extends AppCompatActivity {
         adapter.addFragment(threadsFragmentobj,"THREADS");
         adapter.addFragment(gradesFragmentobj, "GRADES");
         viewPager.setAdapter(adapter);
+        viewPager.setCurrentItem(3,false);
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
