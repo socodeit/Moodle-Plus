@@ -42,18 +42,19 @@ public class courseDetail extends AppCompatActivity {
     RecyclerView.LayoutManager mang;
     DrawerLayout drawer;
     ActionBarDrawerToggle togg;
-
+    Intent i;
+    Bundle extras;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_detail);
-        Intent i = getIntent();
-        Bundle extras = i.getExtras();
+         i = getIntent();
+         extras = i.getExtras();
         rec =(RecyclerView) findViewById(R.id.Rview);
         //bar =(Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(bar);
         rec.setHasFixedSize(true);
-        adp= new MyAdapter(tab,icon,extras.getString("name"),extras.getString("email"),R.drawable.iitd2);
+        adp= new MyAdapter(tab,icon,extras.getString("first_name") + " " + extras.getString("last_name"),extras.getString("email"),R.drawable.iitd2);
         rec.setAdapter(adp);
 
         final GestureDetector mGestureDetector = new GestureDetector(courseDetail.this, new GestureDetector.SimpleOnGestureListener() {

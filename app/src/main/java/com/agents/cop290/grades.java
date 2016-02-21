@@ -1,7 +1,13 @@
 package com.agents.cop290;
 
-/**
- * Created by asderfers on 20-Feb-16.
- */
-public class grades {
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+public class grades extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_grades);
+    }
 }

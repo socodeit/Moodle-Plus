@@ -8,8 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -58,11 +60,13 @@ public class CourseListStudents extends AppCompatActivity {
 
     String[] array_courses;
     ListView listView;
+    Intent i ;
+    Bundle extras ;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent i = getIntent();
-        Bundle extras = i.getExtras();
+        i = getIntent();
+         extras = i.getExtras();
         setContentView(R.layout.activity_course_list_students);
         name = extras.getString("first_name") + " " + extras.getString("last_name");
         email = extras.getString("email");
@@ -70,6 +74,67 @@ public class CourseListStudents extends AppCompatActivity {
         rec.setHasFixedSize(true);
         adp = new MyAdapter(tab, icon, name, email, R.drawable.iitd3);
         rec.setAdapter(adp);
+
+        final GestureDetector mGestureDetector = new GestureDetector(CourseListStudents.this, new GestureDetector.SimpleOnGestureListener() {
+
+            @Override public boolean onSingleTapUp(MotionEvent e) {
+                return true;
+            }
+
+        });
+        rec.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
+                View child = recyclerView.findChildViewUnder(motionEvent.getX(), motionEvent.getY());
+
+
+                if (child != null && mGestureDetector.onTouchEvent(motionEvent)) {
+                    drawer.closeDrawers();
+                    // Toast.makeText(courseDetail.this, "The Item Clicked is: " + recyclerView.getChildPosition(child), Toast.LENGTH_SHORT).show();
+                    switch (recyclerView.getChildAdapterPosition(child)) {
+                        case 1:
+                            Intent nextActivity = new Intent(CourseListStudents.this, profile.class);
+                            startActivity(nextActivity);
+                            break;
+                        case 3:
+                            nextActivity = new Intent(CourseListStudents.this, notifications.class);
+                            startActivity(nextActivity);
+                            break;
+                        case 2:
+                            nextActivity = new Intent(CourseListStudents.this, all_courses.class);
+                            startActivity(nextActivity);
+                            break;
+                        case 4:
+                            nextActivity = new Intent(CourseListStudents.this, grades.class);
+                            startActivity(nextActivity);
+                            break;
+                        case 5:
+                            LoginActivity.cookie = "";
+                            nextActivity = new Intent(CourseListStudents.this, LoginActivity.class);
+                            startActivity(nextActivity);
+                            break;
+
+                    }
+
+
+                    return true;
+
+                }
+
+                return false;
+            }
+
+            @Override
+            public void onTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
+
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+            }
+        });
+
         mang = new LinearLayoutManager(this);
         rec.setLayoutManager(mang);
         bar = (Toolbar) findViewById(R.id.toobar);
@@ -199,9 +264,15 @@ public class CourseListStudents extends AppCompatActivity {
                 String[] abcd = item.split(":");
                 String courseCODE = abcd[0];
                 Intent i = new Intent(CourseListStudents.this, courseDetail.class);
-                i.putExtra("COURSECODE", courseCODE);
-                i.putExtra("name", name);
-                i.putExtra("email", email);
+                Bundle userDetails = new Bundle();
+                userDetails.putString("first_name",extras.getString("first_name"));
+                userDetails.putString("last_name",extras.getString("last_name"));
+                userDetails.putString("id",extras.getString("id"));
+                userDetails.putString("entry_no",extras.getString("entry_no"));
+                userDetails.putInt("type_", extras.getInt("type_"));
+                userDetails.putString("email", extras.getString("email"));
+                userDetails.putString("COURSECODE", courseCODE);
+               i.putExtras(userDetails);
                 startActivity(i);
             }
         });
