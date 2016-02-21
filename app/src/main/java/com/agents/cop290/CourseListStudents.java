@@ -149,7 +149,7 @@ String tab[] ={"Profile","Courses","Notifications","Grades","Log Out"};
 
 
         //creating the listview of list of courses
-
+       array_courses[0]="asdf";
         listView = (ListView) findViewById(R.id.course_list);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.simple_list, array_courses);
 

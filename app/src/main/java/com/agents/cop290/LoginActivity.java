@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 //Sending GET request to server for login
                 //TODO : Adding exception for empty username and password
-                mainURL = "http://192.168.0.112:8000/";
+                mainURL = "http://10.192.48.179:8000/";
                 final String url = mainURL+"default/login.json?userid="+username+"&password="+password;
                 StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                         new Response.Listener<String>() {
