@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -33,10 +34,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CourseListStudents extends AppCompatActivity {
-    //
-//    //initialising array for courses
-//
-//
+
+  //initialising array for courses
+
+
     String tab[] = {"Profile", "Courses", "Notifications", "Grades", "Log Out"};
     int icon[] = {R.drawable.p, R.drawable.co, R.drawable.notifications, R.drawable.ic_grade, R.drawable.logout};
     Toolbar bar;
@@ -47,6 +48,7 @@ public class CourseListStudents extends AppCompatActivity {
     ActionBarDrawerToggle togg;
     String name;
     String email;
+    int type;
 //
 //    @Override
 //    protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +60,7 @@ public class CourseListStudents extends AppCompatActivity {
 
     String[] array_courses;
     ListView listView;
+    TextView welcome;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +70,16 @@ public class CourseListStudents extends AppCompatActivity {
         setContentView(R.layout.activity_course_list_students);
         name = extras.getString("first_name") + " " + extras.getString("last_name");
         email = extras.getString("email");
+        type = extras.getInt("type_");
+
+        //Set Welcome Message Here
+        welcome =  (TextView) findViewById(R.id.welcomeMsg);
+        if(type == 1) {
+            welcome.setText("WELCOME FACULTY " + name);
+        }
+        else{
+            welcome.setText("WELCOME STUDENT " + name);
+        }
         rec = (RecyclerView) findViewById(R.id.recview);
         rec.setHasFixedSize(true);
         adp = new MyAdapter(tab, icon, name, email, R.drawable.iitd3);
@@ -190,6 +203,7 @@ public class CourseListStudents extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.simple_list, array_courses);
 
         listView.setAdapter(adapter);
+
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
