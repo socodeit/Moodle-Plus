@@ -38,7 +38,9 @@
         <activity
             android:name=".notifications"
             android:theme="@style/MyMaterialTheme" />
-        <activity android:name=".all_courses"></activity>
+        <activity android:name=".all_courses" />
+        <activity android:name=".grades"></activity>
+        <activity android:name=".profile"></activity>
     </application>
 
 </manifest>
