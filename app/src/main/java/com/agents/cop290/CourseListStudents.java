@@ -168,7 +168,7 @@ public class CourseListStudents extends AppCompatActivity {
             public void onResponse(String response) {
                 try {
                     //accessing course_info, current sem
-                    Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
 
                     //Convert String to JSON object
                     JSONObject course_response = new JSONObject(response);
@@ -217,10 +217,6 @@ public class CourseListStudents extends AppCompatActivity {
         requestQueue.add(myReq2);
 
 
-        //creating the listview of list of courses
-        Boolean ac = array_courses == null;
-        String abc = String.valueOf(ac);
-        Toast.makeText(getApplicationContext(), abc, Toast.LENGTH_LONG).show();
 
 
 
@@ -251,6 +247,8 @@ public class CourseListStudents extends AppCompatActivity {
     }
 
     void run() {
+        //creating the listview of list of courses
+
         listView = (ListView) findViewById(R.id.course_list);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.simple_list, array_courses);
@@ -263,6 +261,7 @@ public class CourseListStudents extends AppCompatActivity {
                 String item = parent.getItemAtPosition(position).toString();
                 String[] abcd = item.split(":");
                 String courseCODE = abcd[0];
+                //Toast.makeText(getApplicationContext(), courseCODE,Toast.LENGTH_LONG).show();
                 Intent i = new Intent(CourseListStudents.this, courseDetail.class);
                 Bundle userDetails = new Bundle();
                 userDetails.putString("first_name",extras.getString("first_name"));
