@@ -48,13 +48,12 @@ public class notifications extends AppCompatActivity {
                     JSONArray notif =response.getJSONArray("notifications");
                     notification = new String[notif.length()];
                     time =new String[notif.length()];
-                    sno =new int[notif.length()];
                     to  =new String[notif.length()];
                     for(int i=0;i<notif.length();i++) {
                         JSONObject n = notif.getJSONObject(i);
                         notification[i]=n.getString("description");
                         time[i]=n.getString("created_at");
-                        sno[i]=i;
+                        notification[i]=notification[i].replaceAll("<.*?>","");
                         to[i]=notification[i]+"\n                                                    "+time[i];
                     }
                     ListView listView = (ListView) findViewById(R.id.lv);
