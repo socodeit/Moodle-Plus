@@ -280,6 +280,7 @@ public class CourseListStudents extends AppCompatActivity {
                 i.putExtra("COURSECODE", courseCODE);
                 i.putExtra("name", name);
                 i.putExtra("email", email);
+                i.putExtras(extras);
                 startActivity(i);
             }
         });

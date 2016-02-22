@@ -1,6 +1,7 @@
 package com.agents.cop290;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
@@ -41,37 +42,49 @@ public class assignment extends AppCompatActivity {
                     JSONObject as =response.getJSONObject("assignment");
                     JSONObject reg =response.getJSONObject("registered");
                     JSONObject course =response.getJSONObject("course");
-                  Toast.makeText(getApplicationContext(),"kiol"+reg,Toast.LENGTH_LONG).show();
-                      int cid=as.getInt("registered_course_id");
+                  //Toast.makeText(getApplicationContext(),"kiol"+reg,Toast.LENGTH_LONG).show();
+                      int cid=as.getInt("id");
                     TextView a = (TextView) findViewById(R.id.cid);
-                    a.setText("   "+Integer.toString(cid));
+                    Typeface tf = Typeface.createFromAsset(getAssets(),
+                            "fonts/GOTHIC.TTF");
+                    a.setTypeface(tf);
+                    a.setText(Integer.toString(cid));
                     a = (TextView) findViewById(R.id.asname);
+                    a.setTypeface(tf);
                     a.setText(as.getString("name"));
                   //  Toast.makeText(getApplicationContext(),as.getString("name")+"asaddsf",Toast.LENGTH_SHORT).show();
 
                     a = (TextView) findViewById(R.id.pid);
-                    a.setText("   "+Integer.toString(reg.getInt("professor")));
+                    a.setTypeface(tf);
+                    a.setText(Integer.toString(reg.getInt("professor")));
                     a = (TextView) findViewById(R.id.sem);
                     int sem=reg.getInt("semester");
-                    a.setText("   "+Integer.toString(sem));
+                    a.setTypeface(tf);
+                    a.setText(Integer.toString(sem));
                     a = (TextView) findViewById(R.id.year);
                     String year=Integer.toString(reg.getInt("year_"));
-                    a.setText("   "+year);
+                    a.setTypeface(tf);
+                    a.setText(year);
                     a = (TextView) findViewById(R.id.course);
-                    a.setText("   "+course.getString("code"));
+                    a.setTypeface(tf);
+                    a.setText(course.getString("code"));
                     a = (TextView) findViewById(R.id.created);
-                    a.setText("   "+as.getString("created_at"));
+                    a.setTypeface(tf);
+                    a.setText(as.getString("created_at"));
                     a = (TextView) findViewById(R.id.dead);
-                    a.setText("   "+as.getString("deadline"));
+                    a.setTypeface(tf);
+                    a.setText(as.getString("deadline"));
                     a = (TextView) findViewById(R.id.late);
-                    a.setText("   "+Integer.toString(as.getInt("late_days_allowed")));
+                    a.setTypeface(tf);
+                    a.setText(Integer.toString(as.getInt("late_days_allowed")));
                     a = (TextView) findViewById(R.id.description);
-                    a.setText("   "+as.getString("description").replaceAll("<.*?>",""));
+                    a.setTypeface(tf);
+                    a.setText((as.getString("description").replaceAll("<.*?>","")).replaceAll("&.*?;",""));
 
                 }catch (JSONException e)
                 {
                     //TODO : handling error by adding new activity
-                    Toast.makeText(getApplicationContext(), e.toString()+"ioppopopo", Toast.LENGTH_SHORT);
+                    Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT);
                 }
             }
         }, new Response.ErrorListener() {

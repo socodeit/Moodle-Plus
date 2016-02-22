@@ -45,6 +45,10 @@ public class grades extends AppCompatActivity {
                     JSONArray courses =response.getJSONArray("courses");
                     JSONArray grades =response.getJSONArray("grades");
                     all=new String[courses.length()];
+                    if(courses.length()==0)
+                    {
+                        Toast.makeText(getApplicationContext(),"No Grades to Show.... Chill !!!!",Toast.LENGTH_LONG).show();
+                    }
                     for(int i=0;i<courses.length();i++) {
 
                         JSONObject n = courses.getJSONObject(i);

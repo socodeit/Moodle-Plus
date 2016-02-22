@@ -49,6 +49,10 @@ public class notifications extends AppCompatActivity {
                     notification = new String[notif.length()];
                     time =new String[notif.length()];
                     to  =new String[notif.length()];
+                    if(notif.length()==0)
+                    {
+                        Toast.makeText(getApplicationContext(),"No Notifications to Show.... Chill !!!!",Toast.LENGTH_LONG).show();
+                    }
                     for(int i=0;i<notif.length();i++) {
                         JSONObject n = notif.getJSONObject(i);
                         notification[i]=n.getString("description");

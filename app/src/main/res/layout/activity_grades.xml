@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="S.No   Course    Grade Item        Score       Weight        Absolute"
+        android:text="    Course        Grade Item         Score       Weight    Absolute"
         android:id="@+id/sbar"
         android:textColor="#FFFFFF"
         android:background="#000000"/>

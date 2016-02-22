@@ -72,7 +72,7 @@ public class assignmentFragment extends Fragment {
 
                     for(int i=0;i<assignmentArray.length();i++)
                     {
-                        assignmentStringArray[i]=assignmentArray.getJSONObject(i).getInt("id")+".  "+assignmentArray.getJSONObject(i).getString("name")+"\n Deadline:"+assignmentArray.getJSONObject(i).getString("deadline")+"    Late days allowed: "+assignmentArray.getJSONObject(i).getString("late_days_allowed");
+                        assignmentStringArray[i]=assignmentArray.getJSONObject(i).getInt("id")+".  "+assignmentArray.getJSONObject(i).getString("name")+"\n Deadline:"+assignmentArray.getJSONObject(i).getString("deadline")+"       Late days allowed: "+assignmentArray.getJSONObject(i).getString("late_days_allowed");
                     }
 
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(context,R.layout.simple_new,assignmentStringArray);
