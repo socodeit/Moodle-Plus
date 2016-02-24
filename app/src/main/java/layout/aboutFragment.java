@@ -42,8 +42,7 @@ public class aboutFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-//        final String  courseCode = getArguments().getString("courseCode");
-        final String  courseCode="cop290";
+        final String  courseCode = "cop290";
         //TODO: showing "getting data...."
         final View view= inflater.inflate(R.layout.fragment_about, container, false);
 

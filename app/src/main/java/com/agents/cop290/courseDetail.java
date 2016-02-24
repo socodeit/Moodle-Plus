@@ -32,7 +32,7 @@ public class courseDetail extends AppCompatActivity {
    // private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    public String courseCode="cop290";
+    public static String courseCode="cop290";
 
     String tab[] ={"Courses","Notifications","Grades","Threads","Log Out"};
     int icon[]={R.drawable.co,R.drawable.notifications,R.drawable.ic_grade,R.drawable.ic_thread,R.drawable.logout};

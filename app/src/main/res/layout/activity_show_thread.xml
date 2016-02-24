@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.agents.cop290.showThread"
+    android:orientation="vertical">
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listViewShowThread"
+        android:layout_weight="4"
+        android:layout_marginBottom="0dp"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        >
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="3"
+            android:hint="Write comment here"
+            android:inputType="textMultiLine"
+            android:textSize="20dp"
+            android:id="@+id/comment"
+            android:layout_weight="10" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="POST"
+            android:id="@+id/postButton"
+            android:layout_weight="0.1"
+            android:textSize="20dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

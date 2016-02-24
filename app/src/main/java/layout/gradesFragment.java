@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.agents.cop290.LoginActivity;
 import com.agents.cop290.R;
+import com.agents.cop290.courseDetail;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -48,14 +49,14 @@ public class gradesFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         super.onActivityCreated(savedInstanceState);
-//        final String  courseCode = getArguments().getString("courseCode");
         final String  courseCode = "cop290";
-        final ListView gradeList = (ListView)getActivity().findViewById(R.id.gradeList);
+        final ListView gradeList;
+        gradeList = (ListView)getActivity().findViewById(R.id.gradeList);
         final Context context=getActivity();
 
 
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-        String url = LoginActivity.mainURL + "courses/course.json/"+courseCode+"/grades";
+        String url = LoginActivity.mainURL + "courses/course.json/"+ courseCode+"/grades";
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
