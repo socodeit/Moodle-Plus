@@ -63,11 +63,12 @@ public class CourseListStudents extends AppCompatActivity {
     String[] array_courses;
     ListView listView;
     TextView welcome;
-
+    Intent i;
+    Bundle extras;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent i = getIntent();
-        Bundle extras = i.getExtras();
+        i = getIntent();
+        extras = i.getExtras();
         setContentView(R.layout.activity_course_list_students);
         setContentView(R.layout.activity_course_list_students);
         name = extras.getString("first_name") + " " + extras.getString("last_name");
@@ -105,6 +106,7 @@ public class CourseListStudents extends AppCompatActivity {
                     switch (recyclerView.getChildAdapterPosition(child)) {
                         case 1:
                             Intent nextActivity = new Intent(CourseListStudents.this, profile.class);
+                            nextActivity.putExtras(extras);
                             startActivity(nextActivity);
                             break;
                         case 3:
@@ -112,7 +114,8 @@ public class CourseListStudents extends AppCompatActivity {
                             startActivity(nextActivity);
                             break;
                         case 2:
-                            nextActivity = new Intent(CourseListStudents.this, all_courses.class);
+                            nextActivity = new Intent(CourseListStudents.this, CourseListStudents.class);
+                            nextActivity.putExtras(extras);
                             startActivity(nextActivity);
                             break;
                         case 4:
@@ -277,6 +280,7 @@ public class CourseListStudents extends AppCompatActivity {
                 i.putExtra("COURSECODE", courseCODE);
                 i.putExtra("name", name);
                 i.putExtra("email", email);
+                i.putExtras(extras);
                 startActivity(i);
             }
         });

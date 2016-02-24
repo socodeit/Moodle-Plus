@@ -48,14 +48,17 @@ public class notifications extends AppCompatActivity {
                     JSONArray notif =response.getJSONArray("notifications");
                     notification = new String[notif.length()];
                     time =new String[notif.length()];
-                    sno =new int[notif.length()];
                     to  =new String[notif.length()];
+                    if(notif.length()==0)
+                    {
+                        Toast.makeText(getApplicationContext(),"No Notifications to Show.... Chill !!!!",Toast.LENGTH_LONG).show();
+                    }
                     for(int i=0;i<notif.length();i++) {
                         JSONObject n = notif.getJSONObject(i);
                         notification[i]=n.getString("description");
                         time[i]=n.getString("created_at");
-                        sno[i]=i;
-                        to[i]=i+"  "+notification[i]+"    "+time[i];
+                        notification[i]=notification[i].replaceAll("<.*?>","");
+                        to[i]=notification[i]+"\n                                                    "+time[i];
                     }
                     ListView listView = (ListView) findViewById(R.id.lv);
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.simple_new,to );

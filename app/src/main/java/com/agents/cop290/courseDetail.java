@@ -34,21 +34,21 @@ public class courseDetail extends AppCompatActivity {
     private ViewPager viewPager;
     public static String courseCode="cop290";
 
-    String tab[] ={"Courses","Notifications","Grades","Threads","Log Out"};
-    int icon[]={R.drawable.co,R.drawable.notifications,R.drawable.ic_grade,R.drawable.ic_thread,R.drawable.logout};
+    String tab[] ={"Profile","Courses","Notifications","Grades","Log Out"};
+    int icon[]={R.drawable.p,R.drawable.co,R.drawable.notifications,R.drawable.ic_grade,R.drawable.logout};
     Toolbar bar;
     RecyclerView rec;
     RecyclerView.Adapter adp;
     RecyclerView.LayoutManager mang;
     DrawerLayout drawer;
     ActionBarDrawerToggle togg;
-
+Bundle extras;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_detail);
         Intent i = getIntent();
-        Bundle extras = i.getExtras();
+         extras = i.getExtras();
         courseCode=extras.getString("COURSECODE");
 
         rec =(RecyclerView) findViewById(R.id.Rview);
@@ -77,6 +77,7 @@ public class courseDetail extends AppCompatActivity {
                     switch (recyclerView.getChildAdapterPosition(child)) {
                         case 1:
                             Intent nextActivity = new Intent(courseDetail.this, profile.class);
+                            nextActivity.putExtras(extras);
                             startActivity(nextActivity);
                             break;
                         case 3:
@@ -84,7 +85,8 @@ public class courseDetail extends AppCompatActivity {
                             startActivity(nextActivity);
                             break;
                         case 2:
-                            nextActivity = new Intent(courseDetail.this, all_courses.class);
+                            nextActivity = new Intent(courseDetail.this, CourseListStudents.class);
+                            nextActivity.putExtras(extras);
                             startActivity(nextActivity);
                             break;
                         case 4:

@@ -1,0 +1,384 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="layout.aboutFragment">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+
+
+        <ImageView
+        android:layout_width="169dp"
+        android:layout_height="120dp"
+        android:id="@+id/imageView"
+        android:src="@drawable/assignment"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="#ffffff" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text=""
+            android:id="@+id/textView2"
+            android:background="#000000"
+            android:layout_below="@+id/imageView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="      Id"
+            android:id="@+id/textView5"
+            android:textColor="#000000"
+            android:layout_below="@+id/imageView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="202dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/cid"
+            android:textColor="#000000"
+            android:layout_below="@+id/textView2"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignBottom="@+id/textView5"
+            android:layout_toRightOf="@+id/textView33"
+            android:layout_toEndOf="@+id/textView33" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text=""
+            android:id="@+id/textView11"
+            android:background="#000000"
+            android:layout_below="@+id/cid"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="      Name"
+            android:id="@+id/textView12"
+            android:textColor="#000000"
+            android:layout_below="@+id/cid"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+
+
+        <TextView
+            android:layout_width="202dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/asname"
+            android:textColor="#000000"
+            android:layout_below="@+id/textView11"
+            android:layout_toRightOf="@+id/textView33"
+            android:layout_alignRight="@+id/cid"
+            android:layout_alignEnd="@+id/cid" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text=""
+            android:id="@+id/textView14"
+            android:background="#000000"
+            android:layout_below="@+id/asname"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="      Professor Id"
+            android:id="@+id/textView15"
+            android:textColor="#000000"
+            android:layout_below="@+id/textView14"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="202dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/pid"
+            android:textColor="#000000"
+            android:layout_alignTop="@+id/textView14"
+            android:layout_alignRight="@+id/asname"
+            android:layout_alignEnd="@+id/asname"
+            android:layout_alignBottom="@+id/textView15"
+            android:layout_toRightOf="@+id/textView33"
+            android:layout_toEndOf="@+id/textView33" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text=""
+            android:id="@+id/textView17"
+            android:background="#000000"
+            android:layout_below="@+id/pid"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="      Semester"
+            android:id="@+id/textView18"
+            android:textColor="#000000"
+            android:layout_below="@+id/textView17"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="202dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/sem"
+            android:textColor="#000000"
+            android:layout_below="@+id/textView17"
+            android:layout_alignRight="@+id/pid"
+            android:layout_alignEnd="@+id/pid"
+            android:layout_alignBottom="@+id/textView18"
+            android:layout_toRightOf="@+id/textView33"
+            android:layout_toEndOf="@+id/textView33" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text=""
+            android:id="@+id/textView20"
+            android:background="#000000"
+            android:layout_below="@+id/sem"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="      Year"
+            android:id="@+id/textView21"
+            android:textColor="#000000"
+            android:layout_below="@+id/textView20"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="202dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/year"
+            android:textColor="#000000"
+            android:layout_alignBottom="@+id/textView21"
+            android:layout_alignRight="@+id/sem"
+            android:layout_alignEnd="@+id/sem"
+            android:layout_alignTop="@+id/textView21"
+            android:layout_toRightOf="@+id/textView33"
+            android:layout_toEndOf="@+id/textView33" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text=""
+            android:id="@+id/textView23"
+            android:background="#000000"
+            android:layout_below="@+id/year"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="      Course"
+            android:id="@+id/textView24"
+            android:textColor="#000000"
+            android:layout_below="@+id/textView23"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="202dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/course"
+            android:textColor="#000000"
+            android:layout_alignBottom="@+id/textView24"
+            android:layout_alignRight="@+id/year"
+            android:layout_alignEnd="@+id/year"
+            android:layout_alignTop="@+id/textView24"
+            android:layout_toRightOf="@+id/textView33"
+            android:layout_toEndOf="@+id/textView33" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text=""
+            android:id="@+id/textView26"
+            android:background="#000000"
+            android:layout_below="@+id/course"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="      Created At"
+            android:id="@+id/textView27"
+            android:textColor="#000000"
+            android:layout_below="@+id/textView26"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="202dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/created"
+            android:textColor="#000000"
+            android:layout_alignRight="@+id/course"
+            android:layout_alignEnd="@+id/course"
+            android:layout_alignTop="@+id/textView27"
+            android:layout_toRightOf="@+id/textView33"
+            android:layout_toEndOf="@+id/textView33" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text=""
+            android:id="@+id/textView29"
+            android:background="#000000"
+            android:layout_below="@+id/created"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="      DeadLine"
+            android:id="@+id/textView30"
+            android:textColor="#000000"
+            android:layout_below="@+id/textView29"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="202dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/dead"
+            android:textColor="#000000"
+            android:layout_alignBottom="@+id/textView30"
+            android:layout_alignRight="@+id/created"
+            android:layout_alignEnd="@+id/created"
+            android:layout_alignTop="@+id/textView29"
+            android:layout_toRightOf="@+id/textView33"
+            android:layout_toEndOf="@+id/textView33" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text=""
+            android:id="@+id/textView32"
+            android:background="#000000"
+            android:layout_below="@+id/dead"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="      Late Days Allowed  "
+            android:id="@+id/textView33"
+            android:textColor="#000000"
+            android:layout_below="@+id/textView32"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="202dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/late"
+            android:textColor="#000000"
+            android:layout_below="@+id/textView32"
+            android:layout_toRightOf="@+id/textView33"
+            android:layout_alignBottom="@+id/textView33"
+            android:layout_alignRight="@+id/dead"
+            android:layout_alignEnd="@+id/dead" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text=""
+            android:id="@+id/textView35"
+            android:background="#000000"
+            android:layout_below="@+id/textView33"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Description"
+            android:id="@+id/textView36"
+            android:textColor="#000000"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:gravity="center"
+            android:layout_alignTop="@+id/textView35"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+        <TextView
+            android:layout_width="202dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/description"
+            android:textColor="#000000"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView36"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true" />
+
+    </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>
