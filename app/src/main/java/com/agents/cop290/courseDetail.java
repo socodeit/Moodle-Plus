@@ -33,6 +33,12 @@ public class courseDetail extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     public static String courseCode="cop290";
+    public static courseDetail instance;
+
+    public static courseDetail getinstance()
+    {
+        return instance;
+    }
 
     String tab[] ={"Profile","Courses","Notifications","Grades","Log Out"};
     int icon[]={R.drawable.p,R.drawable.co,R.drawable.notifications,R.drawable.ic_grade,R.drawable.logout};
@@ -50,6 +56,7 @@ Bundle extras;
         Intent i = getIntent();
          extras = i.getExtras();
         courseCode=extras.getString("COURSECODE");
+        instance=this;
 
         rec =(RecyclerView) findViewById(R.id.Rview);
         //bar =(Toolbar) findViewById(R.id.toolbar);

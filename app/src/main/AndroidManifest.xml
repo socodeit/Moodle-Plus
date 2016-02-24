@@ -35,13 +35,15 @@
         <activity android:name=".assignmentFragment" />
         <activity android:name=".gradesFragment" />
         <activity android:name=".threadsFragment" />
+        <activity android:name=".assignment"/>
         <activity
             android:name=".notifications"
             android:theme="@style/MyMaterialTheme" />
         <activity android:name=".all_courses" />
         <activity android:name=".grades" />
         <activity android:name=".profile" />
-        <activity android:name=".showThread"/>
+        <activity android:name=".showThread"
+            android:theme="@style/MyMaterialTheme"/>
     </application>
 
 </manifest>

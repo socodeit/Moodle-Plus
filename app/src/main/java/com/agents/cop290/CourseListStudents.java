@@ -39,6 +39,7 @@ public class CourseListStudents extends AppCompatActivity {
 
   //initialising array for courses
 
+    public static String clickedcourseCode;
 
     String tab[] = {"Profile", "Courses", "Notifications", "Grades", "Log Out"};
     int icon[] = {R.drawable.p, R.drawable.co, R.drawable.notifications, R.drawable.ic_grade, R.drawable.logout};
@@ -195,7 +196,7 @@ public class CourseListStudents extends AppCompatActivity {
 
                     for (int i = 0; i < course_list.length(); i++) {
                         JSONObject course_object = course_list.getJSONObject(i);
-                        String course_name = course_object.optString("code").toString() + " : " + course_object.optString("name").toString();
+                        String course_name = course_object.optString("code").toString() + ": " + course_object.optString("name").toString();
                         array_courses[i] = course_name;
                     }
                     run();
@@ -276,6 +277,7 @@ public class CourseListStudents extends AppCompatActivity {
                 String[] abcd = item.split(":");
                 String courseCODE = abcd[0];
                 //Toast.makeText(getApplicationContext(), courseCODE,Toast.LENGTH_LONG).show();
+                clickedcourseCode=courseCODE;
                 Intent i = new Intent(CourseListStudents.this, courseDetail.class);
                 i.putExtra("COURSECODE", courseCODE);
                 i.putExtra("name", name);

@@ -5,13 +5,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.agents.cop290.CourseListStudents;
 import com.agents.cop290.LoginActivity;
 import com.agents.cop290.R;
 import com.agents.cop290.adapters.AdapterThread;
@@ -56,7 +61,7 @@ public class threadsFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         super.onActivityCreated(savedInstanceState);
-        final String  courseCode = "cop290";
+        final String  courseCode = CourseListStudents.clickedcourseCode;
         final ListView listView = (ListView)getActivity().findViewById(R.id.threadTitleListView);
 
         boolean ans = listView==null;
@@ -127,6 +132,64 @@ public class threadsFragment extends Fragment {
 
         requestQueue.add(stringRequest);
 
+        //Posting thread
+
+        Button postButton = (Button)getActivity().findViewById(R.id.post_button);
+
+        postButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String url2=threadURL(courseCode);
+                //TODO Exception for null url;
+
+                StringRequest stringRequest1=new StringRequest(Request.Method.GET, url2, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String s) {
+
+                        Toast.makeText(getContext(),"Thread Post Successful",Toast.LENGTH_LONG).show();
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+
+                    }
+                }){
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError {
+                        Map<String, String> headers = super.getHeaders();
+
+                        if (headers == null
+                                || headers.equals(Collections.emptyMap())) {
+                            headers = new HashMap<String, String>();
+                        }
+                        headers.put("Cookie", LoginActivity.cookie);
+
+                        return headers;
+
+                    }
+                };
+
+                requestQueue.add(stringRequest1);
+            }
+        });
+
+    }
+
+    public String threadURL(String courseCode)
+    {
+        EditText title = (EditText)getActivity().findViewById(R.id.threadTitle);
+        EditText desc = (EditText)getActivity().findViewById(R.id.threadDesc);
+
+        Editable editable = title.getText();
+        final String Title = editable == null ? null : editable.toString();
+        editable = desc.getText();
+        final String Desc = editable == null ? null : editable.toString();
+
+        //TODO : null string for empty title and description
+
+        String url=LoginActivity.mainURL + "/threads/new.json?title="+Title+"&description="+Desc+"&course_code="+courseCode;
+        return url;
     }
 
 }

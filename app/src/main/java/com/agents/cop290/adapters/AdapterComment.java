@@ -16,8 +16,10 @@ import java.util.ArrayList;
  */
 public class AdapterComment extends ArrayAdapter<com.agents.cop290.adapters.comment>{
 
+    //Array list for class comment
     private ArrayList<com.agents.cop290.adapters.comment> comments;
 
+    // COnstructor for Adaptor
     public AdapterComment(Context context, int layoutResourceId, ArrayList<comment> data) {
         super(context, layoutResourceId, data);
         this.comments=data;

@@ -1,13 +1,16 @@
 package layout;
 
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.agents.cop290.CourseListStudents;
 import com.agents.cop290.LoginActivity;
 import com.agents.cop290.R;
 import com.agents.cop290.courseDetail;
@@ -32,9 +35,8 @@ import java.util.Map;
  */
 public class aboutFragment extends Fragment {
 
-
+    //constructor for the fragment
     public aboutFragment() {
-        // Required empty public constructor
     }
 
 
@@ -42,18 +44,20 @@ public class aboutFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final String  courseCode = "cop290";
-        //TODO: showing "getting data...."
         final View view= inflater.inflate(R.layout.fragment_about, container, false);
 
+        //Volley Request Queue
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+
 
         final TextView courseTitle = (TextView) view.findViewById(R.id.courseTitle);
         final TextView courseDesc = (TextView) view.findViewById(R.id.courseDesc);
         final TextView courseCredit = (TextView) view.findViewById(R.id.courseCredit);
         final TextView courseLTP = (TextView) view.findViewById(R.id.courseLTP);
 
+
         String url = LoginActivity.mainURL + "courses/list.json";
+
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -65,7 +69,8 @@ public class aboutFragment extends Fragment {
 
                     for(int i=0;i<coursesList.length();i++)
                     {
-                        if(coursesList.getJSONObject(i).getString("code").equals(courseCode)){
+                        //selecting course according to code
+                        if(coursesList.getJSONObject(i).getString("code").equals(CourseListStudents.clickedcourseCode)){
                             courseTitle.setText(coursesList.getJSONObject(i).getString("name"));
                             courseDesc.setText(coursesList.getJSONObject(i).getString("description"));
                             courseCredit.setText("CREDITS:"+coursesList.getJSONObject(i).getInt("credits"));

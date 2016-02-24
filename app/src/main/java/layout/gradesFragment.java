@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.agents.cop290.CourseListStudents;
 import com.agents.cop290.LoginActivity;
 import com.agents.cop290.R;
 import com.agents.cop290.courseDetail;
@@ -48,7 +49,7 @@ public class gradesFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         super.onActivityCreated(savedInstanceState);
-        final String  courseCode = "cop290";
+        final String  courseCode = CourseListStudents.clickedcourseCode;
         final ListView gradeList;
         gradeList = (ListView)getActivity().findViewById(R.id.gradeList);
         final Context context=getActivity();
@@ -75,7 +76,7 @@ public class gradesFragment extends Fragment {
                     gradeList.setAdapter(adapter);
 
                 } catch (JSONException e) {
-                    //TODO: redirect to something went wrong page
+                    //c=TODO: redirect to something went wrong page
                     e.printStackTrace();
                 }
             }

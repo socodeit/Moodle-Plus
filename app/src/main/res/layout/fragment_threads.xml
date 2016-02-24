@@ -4,14 +4,16 @@
     android:layout_height="match_parent"
     tools:context="layout.threadsFragment"
     android:orientation="vertical"
-    android:background="@drawable/thread_fragment_gradient">
+    android:background="#fff">
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="10dp"
-        android:background="@drawable/post_thread_gradient">
+        android:background="#fff">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -38,7 +40,7 @@
         android:maxLines="3"
         android:textSize="25sp"
         android:hint="Description"
-        android:id="@+id/editText"
+        android:id="@+id/threadDesc"
         android:gravity="left|top"
         android:scrollbars="vertical"
         android:layout_gravity="center_horizontal" />
@@ -48,10 +50,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="POST"
-        android:id="@+id/button"
+        android:id="@+id/post_button"
         android:layout_gravity="right"
         android:textSize="25dp"
-        android:background="@drawable/thread_fragment_gradient"
+        android:background="@drawable/post_thread_gradient"
         android:paddingLeft="8dp"
         android:paddingRight="8dp" />
 

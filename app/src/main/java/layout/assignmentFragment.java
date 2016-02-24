@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.agents.cop290.CourseListStudents;
 import com.agents.cop290.LoginActivity;
 import com.agents.cop290.R;
 import com.agents.cop290.assignment;
@@ -52,12 +53,12 @@ public class assignmentFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         super.onActivityCreated(savedInstanceState);
-//        final String  courseCode = getArguments().getString("courseCode");
-        final String  courseCode = "cop290";
+
+        final String  courseCode = CourseListStudents.clickedcourseCode;
         final ListView List = (ListView)getActivity().findViewById(R.id.assign);
         final Context context=getActivity();
 
-
+        //Volley Request Queue
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         String url = LoginActivity.mainURL + "courses/course.json/"+courseCode+"/assignments";
 
@@ -65,7 +66,9 @@ public class assignmentFragment extends Fragment {
             @Override
             public void onResponse(String s) {
                 try {
+                    //Converting string to JSON
                     JSONObject response=new JSONObject(s);
+                    //Getting Array from the JSONObject
                     JSONArray assignmentArray = response.getJSONArray("assignments");
 
                     String[] assignmentStringArray = new String[assignmentArray.length()];
@@ -75,7 +78,9 @@ public class assignmentFragment extends Fragment {
                         assignmentStringArray[i]=assignmentArray.getJSONObject(i).getInt("id")+".  "+assignmentArray.getJSONObject(i).getString("name")+"\n Deadline:"+assignmentArray.getJSONObject(i).getString("deadline")+"       Late days allowed: "+assignmentArray.getJSONObject(i).getString("late_days_allowed");
                     }
 
+                    //Creating custom Adaptor
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(context,R.layout.simple_new,assignmentStringArray);
+                    //setting adaptor for the listview
                     List.setAdapter(adapter);
                     List.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
@@ -91,7 +96,6 @@ public class assignmentFragment extends Fragment {
                     });
 
                 } catch (JSONException e) {
-                    //TODO: redirect to something went wrong page
                     e.printStackTrace();
                 }
             }
