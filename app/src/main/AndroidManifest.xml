@@ -38,10 +38,10 @@
         <activity
             android:name=".notifications"
             android:theme="@style/MyMaterialTheme" />
-        <activity android:name=".all_courses" />
         <activity android:name=".grades" />
         <activity android:name=".profile" />
         <activity android:name=".showThread"/>
+        <activity android:name=".assignment"/>
     </application>
 
 </manifest>

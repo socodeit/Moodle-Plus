@@ -40,7 +40,7 @@ public class assignmentFragment extends Fragment {
     public assignmentFragment() {
         // Required empty public constructor
     }
-   String coursename="";
+    String coursename="";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,7 +55,7 @@ public class assignmentFragment extends Fragment {
 //        final String  courseCode = getArguments().getString("courseCode");
         final String  courseCode = "cop290";
         final ListView List = (ListView)getActivity().findViewById(R.id.assign);
-        final Context context=getActivity();
+        final Context context=getActivity().getBaseContext();
 
 
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
@@ -82,9 +82,9 @@ public class assignmentFragment extends Fragment {
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             String item = parent.getItemAtPosition(position).toString();
                             int a= item.charAt(0)-48;
-                          // Toast.makeText(context, Integer.toString(a), Toast.LENGTH_LONG).show();
+                            // Toast.makeText(context, Integer.toString(a), Toast.LENGTH_LONG).show();
 
-                         Intent i = new Intent(context, assignment.class);
+                            Intent i = new Intent(context, assignment.class);
                             i.putExtra("id", a);
                             startActivity(i);
                         }
