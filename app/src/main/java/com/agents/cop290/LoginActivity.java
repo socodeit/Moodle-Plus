@@ -135,5 +135,9 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(false);//on back button pressed stoppig app to go to last activity as if someone loged out , we do not want to go back to activity
+        Intent nextActivity = new Intent(LoginActivity.this,MainActivity.class);
+        startActivity(nextActivity);    }
 }

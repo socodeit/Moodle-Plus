@@ -151,24 +151,24 @@ public class CourseListStudents extends AppCompatActivity {
         });
         mang = new LinearLayoutManager(this);
         rec.setLayoutManager(mang);
-        bar = (Toolbar) findViewById(R.id.toobar);
-        setSupportActionBar(bar);
+      //  bar = (Toolbar) findViewById(R.id.toobar);
+      //  setSupportActionBar(bar);
         drawer = (DrawerLayout) findViewById(R.id.DrawerLayout);
-        togg = new ActionBarDrawerToggle(this, drawer, bar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
-            @Override
-            public void onDrawerOpened(View drawer) {
-                super.onDrawerOpened(drawer);
-            }
-
-            @Override
-            public void onDrawerClosed(View drawerView) {
-                super.onDrawerClosed(drawerView);
-                // Code here will execute once drawer is closed
-            }
-
-        };
-        drawer.setDrawerListener(togg); // Drawer Listener set to the Drawer toggle
-        togg.syncState();               // Finally we set the drawer toggle sync State
+//        togg = new ActionBarDrawerToggle(this, drawer, bar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
+//            @Override
+//            public void onDrawerOpened(View drawer) {
+//                super.onDrawerOpened(drawer);
+//            }
+//
+//            @Override
+//            public void onDrawerClosed(View drawerView) {
+//                super.onDrawerClosed(drawerView);
+//                // Code here will execute once drawer is closed
+//            }
+//
+//        };
+//        drawer.setDrawerListener(togg); // Drawer Listener set to the Drawer toggle
+//        togg.syncState();               // Finally we set the drawer toggle sync State
 
         final RequestQueue requestQueue = Volley.newRequestQueue(this);
 
@@ -287,7 +287,10 @@ public class CourseListStudents extends AppCompatActivity {
             }
         });
     }
-
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(false);
+    }
     }
 
 
